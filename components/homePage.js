@@ -3,13 +3,19 @@ import { StyleSheet, Text, View, ImageBackground, TextInput, Picker, Image } fro
 import Button from './button';
 import axios from 'axios';
 import App from '../app';
+import Images from './images';
+import APIKey from '../config';
 
 class HomePage extends React.Component {
     state = { 
-      platform: 'psn',
+      platform: 'pc',
       username: '',
       badEntry: false,
       isLoading: false
+     }
+
+     static navigationOptions = {
+         header: null
      }
 
      onUsernameChange = e => {
@@ -23,12 +29,16 @@ class HomePage extends React.Component {
         axios.get(
             `https://api.fortnitetracker.com/v1/profile/${this.state.platform}/${this.state.username}`,
             {headers: {
-                'TRN-Api-Key': 'd1be5026-0958-4754-9edb-bb3dbe795bbf'
+                'TRN-Api-Key': APIKey
             }}
         )
         .then(res=> {
-            this.props.userSelected(res.data);
+
             console.log(res)
+
+            // let { stats, ...rest } = res.data;
+
+            this.props.navigation.navigate('CharacterPage', { fortniteStats: res.data.stats, header: res.data.epicUserHandle })
             // this.props.changeScreen('USER_STATS');
 
             // this.setState({
@@ -53,9 +63,9 @@ class HomePage extends React.Component {
             selectedValue={this.state.platform}
             onValueChange={(itemValue, itemIndex) => this.setState({platform: itemValue})}
             >
+            <Picker.Item label="PC" value="pc"/>
             <Picker.Item label="PS4" value="psn"/>
             <Picker.Item label="XBOX" value="xbl"/>
-            <Picker.Item label="PC" value="pc"/>
         </Picker>
         <Text style={{color: 'white', fontSize: 28, paddingBottom: 5}}> Name the Player!</Text>
         <TextInput textAlign='center' onChangeText={(e)=>this.onUsernameChange(e)} value={this.state.username} style={styles.textInput}/>  
@@ -63,15 +73,11 @@ class HomePage extends React.Component {
         </View>
         <View style={styles.container2}>
         <View>
-        <Text style={{color: 'white', fontSize: 12, paddingBottom: 5, marginLeft: 5}}> Want to compare two players?</Text>
+        <Text style={{color: 'white', fontSize: 12, paddingBottom: 5, marginRight: 0}}> Want to compare two players?</Text>
         <Button text="Compare!" style={styles.footerButton} textStyle={{color: 'green', fontWeight: 'bold', fontSize: 15}}/>
         </View>
-        <View style={{flexDirection: 'row'}}>
-        <Image source={require('../Images/epicgames-logo.png')} style={styles.miniIcon}/>
-        <Image source={require('../Images/twitter-logo.png')} style={styles.miniIcon}/>
-        <Image source={require('../Images/snapchat-logo.png')} style={styles.miniIcon}/>
-        <Image source={require('../Images/twitch-logo.png')} style={styles.miniIcon}/>
-        <Image source={require('../Images/instagram-logo.png')} style={styles.miniIcon}/>
+        <View>
+        <Images/>
         </View>
         </View>
       </ImageBackground>
@@ -120,18 +126,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     height: 35,
-    width: 120,
+    width: 100,
     borderRadius: 15,
     backgroundColor: 'white',
     marginBottom: 100,
-    marginLeft: 23
-  },
-  miniIcon: {
-      height: 15,
-      width: 15,
-      marginTop: 22,
-      backgroundColor: 'transparent'
-
+    marginLeft: 25
   },
   container2: {
       justifyContent: 'space-around',

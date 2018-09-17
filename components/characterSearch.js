@@ -4,27 +4,43 @@ import Button from "./button";
 import HomePage from "./homePage";
 import App from "../App";
 
-const CharacterSearch = props => {
-    console.log(props.user.accountId);
-    let titles = Object.keys(props.user.stats)
+
+const generateName = tag => {
+    switch (tag) {
+        case 'p2':
+            return 'Solo Records';
+        case 'p10':
+            return 'Duo Records'
+        case 'p9':
+            return 'Squad Records'
+        case 'curr_p2':
+            return 'Current Season Solo Records'
+        case 'curr_p10':
+            return 'Current Season Dual Records'
+        case 'curr_p9':
+            return 'Current Season Squad Records'
+        default:
+            return 'Not Available'
+    }
+}
+
+
+const CharacterInfo = props => {
+
+    let stats = props.stats;
+
+    let titles = Object.keys(stats)
+
+    
+
+
   return (
     <View style={styles.container}>
-      {/* <Text style={{ color: "white" }}>{props.user.epicUserHandle}</Text>
-      <Text style={{ color: "white" }}>Single Player Mode:</Text>
-        <Text style={{color: 'white'}}>Score: {props.user.stats.p2.score.displayValue}</Text>
-        <Text style={{color: 'white'}}># of Matches:{props.user.stats.p2.matches.displayValue}</Text>
-        <Text style={{color: 'white'}}># of Kills:{props.user.stats.p2.kills.displayValue}</Text>
-        <Text style={{color: 'white'}}>Kills/Game Ratio: {props.user.stats.p2.kpg.displayValue}</Text>
-      <Text style={{ color: "white" }}>Dual Player Mode:</Text>
-        <Text style={{color: 'white'}}>Score: {props.user.stats.p10.score.displayValue}</Text>
-        <Text style={{color: 'white'}}># of Matches:{props.user.stats.p10.matches.displayValue}</Text>
-        <Text style={{color: 'white'}}># of Kills:{props.user.stats.p10.kills.displayValue}</Text>
-        <Text style={{color: 'white'}}>Kills/Game Ratio: {props.user.stats.p10.kpg.displayValue}</Text> */}
+    <Image style={{height: 100, width: 100, justifyContent: 'flex-start', alignItems: 'flex-start'}} source={require(`../Images/fortnite-dance.gif`)}/>
         {
-            props.user.stats && Object.values(props.user.stats).map((x, i) => (
+            Object.values(stats).map((x, i) => (
                 <React.Fragment key={i}>
-
-                    <Text style={{color: 'white'}}>{titles[i]}</Text>
+                    <Text style={{color: 'white', fontWeight: 'bold'}}>{generateName(titles[i])}</Text>
                     <Text style={{color: 'white'}}>Score: {x.score.displayValue}</Text>
                     <Text style={{color: 'white'}}># of Matches:{x.matches.displayValue}</Text>
                     <Text style={{color: 'white'}}># of Kills:{x.kills.displayValue}</Text>
@@ -35,6 +51,22 @@ const CharacterSearch = props => {
     </View>
   );
 };
+
+class CharacterSearch extends React.Component {
+    static navigationOptions = ({ navigation }) => {
+        
+        return {
+            title: `${navigation.getParam('header', 'info')}'s stats`
+        };
+    };
+
+
+    render() { 
+        let stats = this.props.navigation.getParam('fortniteStats', {});
+        return <CharacterInfo stats={stats} />;
+    }
+}
+ 
 
 const styles = StyleSheet.create({
   userBox: {
