@@ -22,7 +22,9 @@ class HomePage extends React.Component {
         <View style={styles.mainInputBox}>
         <Text style={{color: 'white', fontSize: 40, fontWeight: 'bold', marginTop: 80, paddingBottom: 25}}> Track your Stats</Text>
         <Text style={{color: 'white', fontSize: 28, paddingBottom: 5}}> Choose your platform</Text>
-        <Picker style={{ width: 70, flex: 0, color: 'red', backgroundColor: 'transparent', paddingTop: 0 }}
+        <Picker 
+            itemStyle={{color: 'black', height: 44}}
+            style={{ width: 90, height: 44, backgroundColor: 'white', paddingTop: 0, marginBottom: 30 }}
             selectedValue={this.state.platform}
             onValueChange={(itemValue, itemIndex) => this.setState({platform: itemValue})}
             >
@@ -100,8 +102,8 @@ const styles = StyleSheet.create({
     marginLeft: 23
   },
   miniIcon: {
-      height: 25,
-      width: 25,
+      height: 15,
+      width: 15,
       marginTop: 22,
       backgroundColor: 'transparent'
 
