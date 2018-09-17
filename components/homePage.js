@@ -1,12 +1,15 @@
 import React from 'react';
 import { StyleSheet, Text, View, ImageBackground, TextInput, Picker, Image } from 'react-native';
 import Button from './button';
+import axios from 'axios';
+import App from '../app';
 
 class HomePage extends React.Component {
     state = { 
-      platform: 'PS4',
+      platform: 'psn',
       username: '',
-      badEntry: false
+      badEntry: false,
+      isLoading: false
      }
 
      onUsernameChange = e => {
@@ -14,6 +17,28 @@ class HomePage extends React.Component {
          username: e
        })
      }
+
+    getCharacter = e => {
+        e.preventDefault()
+        axios.get(
+            `https://api.fortnitetracker.com/v1/profile/${this.state.platform}/${this.state.username}`,
+            {headers: {
+                'TRN-Api-Key': 'd1be5026-0958-4754-9edb-bb3dbe795bbf'
+            }}
+        )
+        .then(res=> {
+            this.props.userSelected(res.data);
+            console.log(res)
+            // this.props.changeScreen('USER_STATS');
+
+            // this.setState({
+            //     platform: res.data.platformName,
+            //     username: res.data.epicUserHandle,
+            //     badEntry: true
+            // })
+        })
+
+    }
 
   render() { 
     return ( 
@@ -28,13 +53,13 @@ class HomePage extends React.Component {
             selectedValue={this.state.platform}
             onValueChange={(itemValue, itemIndex) => this.setState({platform: itemValue})}
             >
-            <Picker.Item label="PS4" value="PS4"/>
-            <Picker.Item label="XBOX" value="XBOX"/>
-            <Picker.Item label="PC" value="PC"/>
+            <Picker.Item label="PS4" value="psn"/>
+            <Picker.Item label="XBOX" value="xbl"/>
+            <Picker.Item label="PC" value="pc"/>
         </Picker>
         <Text style={{color: 'white', fontSize: 28, paddingBottom: 5}}> Name the Player!</Text>
-        <TextInput textAlign='center' onChangeText={this.onUsernameChange} value={this.state.username} style={styles.textInput}/>  
-        <Button text="Let's Get It!" style={styles.homepageButton} textStyle={{color: 'blue', fontWeight: 'bold', fontSize: 15}}/>
+        <TextInput textAlign='center' onChangeText={(e)=>this.onUsernameChange(e)} value={this.state.username} style={styles.textInput}/>  
+        <Button onPress={this.getCharacter}  text="Let's Get It!" style={styles.homepageButton} textStyle={{color: 'blue', fontWeight: 'bold', fontSize: 15}}/>
         </View>
         <View style={styles.container2}>
         <View>
