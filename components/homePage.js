@@ -9,7 +9,7 @@ import APIKey from '../config';
 class HomePage extends React.Component {
     state = { 
       platform: 'pc',
-      username: '',
+      username: 'Nylonvision',
       badEntry: false,
       isLoading: false
      }
@@ -58,8 +58,8 @@ class HomePage extends React.Component {
         <Text style={{color: 'white', fontSize: 40, fontWeight: 'bold', marginTop: 80, paddingBottom: 25}}> Track your Stats</Text>
         <Text style={{color: 'white', fontSize: 28, paddingBottom: 5}}> Choose your platform</Text>
         <Picker 
-            itemStyle={{color: 'black', height: 44}}
-            style={{ width: 90, height: 44, backgroundColor: 'white', paddingTop: 0, marginBottom: 30 }}
+            itemStyle={{color: 'white', height: 44, fontWeight: 'bold'}}
+            style={{ width: 85, height: 44,  paddingTop: 0, marginBottom: 30 }}
             selectedValue={this.state.platform}
             onValueChange={(itemValue, itemIndex) => this.setState({platform: itemValue})}
             >
@@ -106,11 +106,13 @@ const styles = StyleSheet.create({
     flex: 1
   },
   textInput: {
-    backgroundColor: 'white',
+    backgroundColor: 'transparent',
     height: 40,
     width: 250,
     borderRadius: 15,
-    borderWidth: 1,
+    borderWidth: 2,
+    borderColor: 'white',
+    color: 'white',
     marginTop: 10
   },
   homepageButton: {
