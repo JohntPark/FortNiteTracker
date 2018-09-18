@@ -9,13 +9,16 @@ import APIKey from '../config';
 class HomePage extends React.Component {
     state = { 
       platform: 'pc',
-      username: 'Nylonvision',
+      username: '',
       badEntry: false,
       isLoading: false
      }
 
      static navigationOptions = {
          header: null
+     }
+     navigateToComparison = () => {
+       this.props.navigation.navigate('ComparisonPage')
      }
 
      onUsernameChange = e => {
@@ -33,22 +36,10 @@ class HomePage extends React.Component {
             }}
         )
         .then(res=> {
-
-            console.log(res)
-
-            // let { stats, ...rest } = res.data;
-
             this.props.navigation.navigate('CharacterPage', { fortniteStats: res.data.stats, header: res.data.epicUserHandle })
-            // this.props.changeScreen('USER_STATS');
-
-            // this.setState({
-            //     platform: res.data.platformName,
-            //     username: res.data.epicUserHandle,
-            //     badEntry: true
-            // })
         })
-
     }
+
 
   render() { 
     return ( 
@@ -74,7 +65,7 @@ class HomePage extends React.Component {
         <View style={styles.container2}>
         <View>
         <Text style={{color: 'white', fontSize: 12, paddingBottom: 5, marginRight: 0}}> Want to compare two players?</Text>
-        <Button text="Compare!" style={styles.footerButton} textStyle={{color: 'green', fontWeight: 'bold', fontSize: 15}}/>
+        <Button text="Compare!" onPress={this.navigateToComparison} style={styles.footerButton} textStyle={{color: 'green', fontWeight: 'bold', fontSize: 15}}/>
         </View>
         <View>
         <Images/>

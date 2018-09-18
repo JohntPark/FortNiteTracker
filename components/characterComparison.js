@@ -35,11 +35,13 @@ const generateName = tag => {
 }
 
 
-const CharacterInfo = props => {
+const ComparisonInfo = props => {
 
     let stats = props.stats;
+    let person2_stats = props.person2_stats;
 
     let titles = Object.keys(stats)
+    let person2_titles = Object.keys(person2_stats)
 
     
 
@@ -56,11 +58,11 @@ const CharacterInfo = props => {
     <Image style={{height: 100, width: 100, justifyContent: 'flex-start', alignItems: 'flex-start'}} source={require(`../Images/dance3.gif`)}/>
     
     </View>
+        <View>
         {
             Object.values(stats).map((x, i) => (
                 <React.Fragment key={i}>
                 <View style={{backgroundColor: '#ffffff', opacity: 0.75, width: 350, justifyContent: 'center', alignItems: 'center'}}>
-                    <Text style={{color: 'red', fontWeight: 'bold', fontSize: 20,}}>{generateName(titles[i])}</Text>
                     <Text style={{color: 'black'}}># of Kills:{x.kills.displayValue}</Text>
                     <Text style={{color: 'black'}}># of Matches:{x.matches.displayValue}</Text>
                     <Text style={{color: 'black'}}>Kills/Game Ratio: {x.kpg.displayValue}</Text>
@@ -68,6 +70,25 @@ const CharacterInfo = props => {
                 </React.Fragment>
             ))
         }
+        {    
+            Object.values(stats).map((x, i) => (
+            <React.Fragment key={i}>
+                <Text style={{color: 'red', fontWeight: 'bold', fontSize: 20,}}>{generateName(titles[i])}</Text>
+            </React.Fragment>
+            ))
+        }
+        {
+            Object.values(person2_stats).map((x, i) => (
+                <React.Fragment key={i}>
+                <View style={{backgroundColor: '#ffffff', opacity: 0.75, width: 350, justifyContent: 'center', alignItems: 'center'}}>
+                    <Text style={{color: 'black'}}># of Kills:{x.kills.displayValue}</Text>
+                    <Text style={{color: 'black'}}># of Matches:{x.matches.displayValue}</Text>
+                    <Text style={{color: 'black'}}>Kills/Game Ratio: {x.kpg.displayValue}</Text>
+                </View>
+                </React.Fragment>
+            ))
+        }
+        </View>
     </View>
     </ScrollView>
     </ImageBackground>
@@ -79,14 +100,22 @@ class CharacterSearch extends React.Component {
     static navigationOptions = ({ navigation }) => {
         
         return {
-            title: `${navigation.getParam('header', 'info')}'s stats`
+            title: `${navigation.getParam('header', 'Person 1' )} vs. ${navigation.getParam('header1', 'Person 2' )}`
         };
     };
 
 
     render() { 
-        let stats = this.props.navigation.getParam('fortniteStats', {});
-        return <CharacterInfo stats={stats} />;
+        let stats = this.props.navigation.getParam('comparisonStats', {});
+        let person2_stats = this.props.navigation.getParam('comparisonStats1', {});
+        console.log(stats);
+        console.log(person2_stats);
+        return (
+            <ComparisonInfo 
+                stats={stats} 
+                person2_stats={person2_stats}
+            />
+        )
     }
 }
  
