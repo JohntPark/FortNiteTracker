@@ -64,7 +64,7 @@ class HomePage extends React.Component {
         </View>
         <View style={styles.container2}>
         <View>
-        <Text style={{color: 'white', fontSize: 12, paddingBottom: 5, marginRight: 0}}> Want to compare two players?</Text>
+        <Text style={{color: 'white', fontSize: 12, paddingBottom: 5, marginRight: 0}}> Want to compare?</Text>
         <Button text="Compare!" onPress={this.navigateToComparison} style={styles.footerButton} textStyle={{color: 'green', fontWeight: 'bold', fontSize: 15}}/>
         </View>
         <View>
@@ -89,7 +89,8 @@ const styles = StyleSheet.create({
   mainInputBox: {
     alignItems: 'center',
     justifyContent: 'center',
-    flex: 1
+    flex: 1,
+    marginRight: 20
   },
   backgroundImage: {
     height: 400,
@@ -119,15 +120,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     height: 35,
-    width: 100,
+    width: 115,
     borderRadius: 15,
     backgroundColor: 'white',
     marginBottom: 100,
-    marginLeft: 25
   },
   container2: {
-      justifyContent: 'space-around',
-      flexDirection: 'row'
+      justifyContent: 'space-between',
+      flexDirection: 'row',
+      marginRight: 35
   }
 });
 

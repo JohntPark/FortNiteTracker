@@ -24,11 +24,11 @@ const generateName = tag => {
         case 'p9':
             return 'Squad Records'
         case 'curr_p2':
-            return 'Current Season Solo Records'
+            return 'Current Season Solo'
         case 'curr_p10':
-            return 'Current Season Dual Records'
+            return 'Current Season Dual'
         case 'curr_p9':
-            return 'Current Season Squad Records'
+            return 'Current Season Squad'
         default:
             return 'Not Available'
     }
@@ -58,36 +58,35 @@ const ComparisonInfo = props => {
     <Image style={{height: 100, width: 100, justifyContent: 'flex-start', alignItems: 'flex-start'}} source={require(`../Images/dance3.gif`)}/>
     
     </View>
-        <View>
+    <View style={{ flexDirection: 'row',}}>
+        <View style={styles.dataStyling}>
         {
             Object.values(stats).map((x, i) => (
+                <View>
                 <React.Fragment key={i}>
-                <View style={{backgroundColor: '#ffffff', opacity: 0.75, width: 350, justifyContent: 'center', alignItems: 'center'}}>
+                    <Text style={{color: 'red', fontWeight: 'bold', fontSize: 15,}}>{generateName(titles[i])}</Text>
                     <Text style={{color: 'black'}}># of Kills:{x.kills.displayValue}</Text>
                     <Text style={{color: 'black'}}># of Matches:{x.matches.displayValue}</Text>
                     <Text style={{color: 'black'}}>Kills/Game Ratio: {x.kpg.displayValue}</Text>
-                </View>
                 </React.Fragment>
+                </View>
             ))
         }
-        {    
-            Object.values(stats).map((x, i) => (
-            <React.Fragment key={i}>
-                <Text style={{color: 'red', fontWeight: 'bold', fontSize: 20,}}>{generateName(titles[i])}</Text>
-            </React.Fragment>
-            ))
-        }
+        </View>
+        <View style={styles.dataStyling}>
         {
             Object.values(person2_stats).map((x, i) => (
+                <View>
                 <React.Fragment key={i}>
-                <View style={{backgroundColor: '#ffffff', opacity: 0.75, width: 350, justifyContent: 'center', alignItems: 'center'}}>
+                    <Text style={{color: 'red', fontWeight: 'bold', fontSize: 15,}}>{generateName(titles[i])}</Text>
                     <Text style={{color: 'black'}}># of Kills:{x.kills.displayValue}</Text>
                     <Text style={{color: 'black'}}># of Matches:{x.matches.displayValue}</Text>
                     <Text style={{color: 'black'}}>Kills/Game Ratio: {x.kpg.displayValue}</Text>
-                </View>
                 </React.Fragment>
+                </View>
             ))
         }
+        </View>
         </View>
     </View>
     </ScrollView>
@@ -148,6 +147,16 @@ const styles = StyleSheet.create({
     width: 400,
     flex: 1,
   },
+  dataStyling: {
+    backgroundColor: '#ffffff',
+    opacity: 0.75,  
+    borderColor: 'blue',
+    borderWidth: 1,
+    width: 185,
+    alignItems: 'center',
+    paddingTop: 15,
+    paddingBottom: 15
+    }
 });
 
 export default CharacterSearch;

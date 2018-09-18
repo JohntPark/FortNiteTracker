@@ -4,13 +4,14 @@ import Button from "./button";
 import HomePage from "./homePage";
 import App from "../App";
 import axios from 'axios';
+import Images from './images';
 import APIKey from '../config';
 
 class ComparisonPage extends React.Component {
     state = { 
         platform: 'pc',
-        username1: '',
-        username2: '',
+        username1: 'nylonvision',
+        username2: 'ninja',
         badEntry: false,
         isLoading: false
        }
@@ -96,9 +97,14 @@ class ComparisonPage extends React.Component {
                     <TextInput textAlign='center' onChangeText={(e)=>this.onPersonTwoChange(e)} value={this.state.username2} style={styles.textInput}/>  
                     <Button onPress={this.characterComparisonButton} text="Let's Get It!" style={styles.homepageButton} textStyle={{color: 'blue', fontWeight: 'bold', fontSize: 15}}/>
                     </View>
+                    <View style={styles.container2}>
                     <View>
-                        <Text style={{color: 'white', fontSize: 12, paddingBottom: 5, marginRight: 0}}> See your Stats?</Text>
-                        <Button text="Single Stats!" onPress={this.navigateToHome} style={styles.footerButton} textStyle={{color: 'green', fontWeight: 'bold', fontSize: 15}}/>
+                        <Text style={{color: 'white', fontSize: 12, paddingBottom: 5, marginRight: 0, marginLeft: 5}}> See your Stats?</Text>
+                        <Button text="Single Stats" onPress={this.navigateToHome} style={styles.footerButton} textStyle={{color: 'green', fontWeight: 'bold', fontSize: 15}}/>
+                    </View>
+                    <View>
+                    <Images/>
+                    </View>
                     </View>
                 </ImageBackground>
             </View>
@@ -114,13 +120,16 @@ const styles = StyleSheet.create({
     mainInputBox: {
       alignItems: 'center',
       justifyContent: 'center',
-      flex: 1
+      flex: 1,
+      marginRight: 20
     },
     backgroundImage: {
       height: 400,
       width: 400,
-      flex: 1
+      flex: 1,
+      marginRight: 100
     },
+
     textInput: {
       backgroundColor: 'transparent',
       height: 40,
@@ -144,15 +153,15 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
       height: 35,
-      width: 150,
+      width: 115,
       borderRadius: 15,
       backgroundColor: 'white',
       marginBottom: 100,
-      marginLeft: 15
     },
     container2: {
-        justifyContent: 'space-around',
-        flexDirection: 'row'
+        justifyContent: 'space-between',
+        flexDirection: 'row',
+        marginRight: 35
     }
   });
 export default ComparisonPage;
