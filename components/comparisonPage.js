@@ -50,7 +50,7 @@ class ComparisonPage extends React.Component {
                         'TRN-Api-Key': APIKey
                     }
                 }
-            )
+            ),
         ];
 
         Promise.all(promises)
@@ -60,7 +60,7 @@ class ComparisonPage extends React.Component {
                     comparisonStats: res[0].data.stats, 
                     header: res[0].data.epicUserHandle,
                     comparisonStats1: res[1].data.stats,
-                    header1: res[1].data.epicUserHandle
+                    header1: res[1].data.epicUserHandle,
                 })
             })
     }

@@ -64,10 +64,10 @@ const ComparisonInfo = props => {
             Object.values(stats).map((x, i) => (
                 <View>
                 <React.Fragment key={i}>
-                    <Text style={{color: 'red', fontWeight: 'bold', fontSize: 15,}}>{generateName(titles[i])}</Text>
-                    <Text style={{color: 'black'}}># of Kills:{x.kills.displayValue}</Text>
-                    <Text style={{color: 'black'}}># of Matches:{x.matches.displayValue}</Text>
-                    <Text style={{color: 'black'}}>Kills/Game Ratio: {x.kpg.displayValue}</Text>
+                    <Text style={{color: 'red', fontWeight: 'bold', fontSize: 16,}}>{generateName(titles[i])}</Text>
+                    <Text style={{color: 'black', fontSize: 12, fontFamily: 'Helvetica'}}># of Kills:{x.kills.displayValue}</Text>
+                    <Text style={{color: 'black', fontSize: 12, fontFamily: 'Helvetica'}}># of Matches:{x.matches.displayValue}</Text>
+                    <Text style={{color: 'black', fontSize: 12, fontFamily: 'Helvetica'}}>Kills/Game Ratio: {x.kpg.displayValue}</Text>
                 </React.Fragment>
                 </View>
             ))
@@ -78,10 +78,10 @@ const ComparisonInfo = props => {
             Object.values(person2_stats).map((x, i) => (
                 <View>
                 <React.Fragment key={i}>
-                    <Text style={{color: 'red', fontWeight: 'bold', fontSize: 15,}}>{generateName(titles[i])}</Text>
-                    <Text style={{color: 'black'}}># of Kills:{x.kills.displayValue}</Text>
-                    <Text style={{color: 'black'}}># of Matches:{x.matches.displayValue}</Text>
-                    <Text style={{color: 'black'}}>Kills/Game Ratio: {x.kpg.displayValue}</Text>
+                    <Text style={{color: 'red', fontWeight: 'bold', fontSize: 16,}}>{generateName(titles[i])}</Text>
+                    <Text style={{color: 'black', fontSize: 12, fontFamily: 'Helvetica'}}># of Kills:{x.kills.displayValue}</Text>
+                    <Text style={{color: 'black', fontSize: 12, fontFamily: 'Helvetica'}}># of Matches:{x.matches.displayValue}</Text>
+                    <Text style={{color: 'black', fontSize: 12, fontFamily: 'Helvetica'}}>Kills/Game Ratio: {x.kpg.displayValue}</Text>
                 </React.Fragment>
                 </View>
             ))
@@ -107,8 +107,6 @@ class CharacterSearch extends React.Component {
     render() { 
         let stats = this.props.navigation.getParam('comparisonStats', {});
         let person2_stats = this.props.navigation.getParam('comparisonStats1', {});
-        console.log(stats);
-        console.log(person2_stats);
         return (
             <ComparisonInfo 
                 stats={stats} 
@@ -153,9 +151,10 @@ const styles = StyleSheet.create({
     borderColor: 'blue',
     borderWidth: 1,
     width: 185,
-    alignItems: 'center',
+    alignItems: 'flex-start',
     paddingTop: 15,
-    paddingBottom: 15
+    paddingBottom: 15,
+    paddingLeft: 10
     }
 });
 

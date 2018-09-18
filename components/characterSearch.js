@@ -59,7 +59,7 @@ const CharacterInfo = props => {
         {
             Object.values(stats).map((x, i) => (
                 <React.Fragment key={i}>
-                <View style={{backgroundColor: '#ffffff', opacity: 0.75, width: 350, justifyContent: 'center', alignItems: 'center'}}>
+                <View style={{backgroundColor: '#ffffff', opacity: 0.75, width: 350, justifyContent: 'center', alignItems: 'center', paddingTop: 10, paddingBottom: 10}}>
                     <Text style={{color: 'red', fontWeight: 'bold', fontSize: 20,}}>{generateName(titles[i])}</Text>
                     <Text style={{color: 'black'}}># of Kills:{x.kills.displayValue}</Text>
                     <Text style={{color: 'black'}}># of Matches:{x.matches.displayValue}</Text>
