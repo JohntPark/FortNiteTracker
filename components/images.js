@@ -18,9 +18,9 @@ const Images = props => {
  
 const styles = StyleSheet.create({
     miniIcon: {
-        height: 13,
-        width: 13,
-        marginTop: 25,
+        height: 18,
+        width: 18,
+        marginTop: 27,
         backgroundColor: 'transparent',
     }
 })

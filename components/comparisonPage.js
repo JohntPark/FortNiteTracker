@@ -10,8 +10,8 @@ import APIKey from '../config';
 class ComparisonPage extends React.Component {
     state = { 
         platform: 'pc',
-        username1: 'nylonvision',
-        username2: 'ninja',
+        username1: '',
+        username2: '',
         badEntry: false,
         isLoading: false
        }
@@ -51,6 +51,7 @@ class ComparisonPage extends React.Component {
                     }
                 }
             ),
+            
         ];
 
         Promise.all(promises)
@@ -77,13 +78,13 @@ class ComparisonPage extends React.Component {
     render() { 
         return ( 
             <View style={styles.container}>
-             <ImageBackground source={require('../Images/comparison.png')} style={styles.backgroundImage}>
+             <ImageBackground source={require('../Images/ironman.jpg')} style={styles.backgroundImage}>
                     <View style={styles.mainInputBox}>
-                    <Text style={{color: 'white', fontSize: 26, fontWeight: 'bold', marginTop: 80, paddingBottom: 25}}> Compare two players</Text>
-                    <Text style={{color: 'white', fontSize: 25, paddingBottom: 5}}> Choose your platform</Text>
+                    <Text style={{color: 'black', fontSize: 26, fontWeight: 'bold', marginTop: 80, paddingBottom: 25}}> Compare Two Players</Text>
+                    <Text style={{color: 'black', fontSize: 25, paddingBottom: 5}}> Choose your platform</Text>
                     <Picker 
-                        itemStyle={{color: 'white', height: 44, fontWeight: 'bold'}}
-                        style={{ width: 85, height: 44,  paddingTop: 0, marginBottom: 30 }}
+                        itemStyle={{color: 'white', height: 44, fontWeight: 'bold', backgroundColor: 'black', opacity: .75}}
+                        style={{ width: 85, height: 44,  paddingTop: 0, marginBottom: 5 }}
                         selectedValue={this.state.platform}
                         onValueChange={(itemValue, itemIndex) => this.setState({platform: itemValue})}
                         >
@@ -91,10 +92,10 @@ class ComparisonPage extends React.Component {
                         <Picker.Item label="PS4" value="psn"/>
                         <Picker.Item label="XBOX" value="xbl"/>
                     </Picker>
-                    <Text style={{color: 'white', fontSize: 28, paddingBottom: 5}}> Name the First Player!</Text>
+                    <Text style={{color: 'black', fontSize: 28, paddingBottom: 5}}> Name the First Player!</Text>
                     <TextInput textAlign='center' onChangeText={(e)=>this.onPersonOneChange(e)} value={this.state.username1} style={styles.textInput}/>  
-                    <Text style={{color: 'white', fontSize: 28, paddingBottom: 5}}> Name the Second Player!</Text>
-                    <TextInput textAlign='center' onChangeText={(e)=>this.onPersonTwoChange(e)} value={this.state.username2} style={styles.textInput}/>  
+                    <Text style={{color: 'black', fontSize: 28, paddingBottom: 5}}> Name the Second Player!</Text>
+                    <TextInput textAlign='center' onChangeText={(e)=>this.onPersonTwoChange(e)} value={this.state.username2} style={styles.textInput2}/>  
                     <Button onPress={this.characterComparisonButton} text="Let's Get It!" style={styles.homepageButton} textStyle={{color: 'blue', fontWeight: 'bold', fontSize: 15}}/>
                     </View>
                     <View style={styles.container2}>
@@ -121,24 +122,44 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
       flex: 1,
-      marginRight: 20
+      marginRight: 20,
+      opacity: .7,
+      backgroundColor: 'white',
+      marginTop: 150,
+      paddingBottom: 90,
+      borderColor: 'blue',
+      borderWidth: 1
+      
     },
     backgroundImage: {
       height: 400,
       width: 400,
       flex: 1,
-      marginRight: 100
+      marginRight: 100,
+      backgroundColor: 'transparent',
     },
 
     textInput: {
-      backgroundColor: 'transparent',
-      height: 40,
+      height: 50,
+      fontWeight: 'bold',
       width: 250,
       borderRadius: 15,
       borderWidth: 2,
-      borderColor: 'white',
-      color: 'white',
-      marginTop: 10
+      borderColor: 'black',
+      color: 'black',
+      marginTop: 10,
+    },
+    textInput2: {
+      height: 50,
+      fontWeight: 'bold',
+      width: 250,
+      borderRadius: 15,
+      borderWidth: 2,
+      borderColor: 'black',
+      color: 'black',
+      marginTop: 10,
+      marginBottom: 50,
+      paddingBottom: 5
     },
     homepageButton: {
         alignItems: 'center',
@@ -147,7 +168,9 @@ const styles = StyleSheet.create({
         width: 120,
         borderRadius: 15,
         backgroundColor: 'white',
-        marginTop: 15
+        marginTop: 15,
+        borderColor: 'black',
+        borderWidth: 2
     },
     footerButton: {
       alignItems: 'center',

@@ -60,12 +60,12 @@ class HomePage extends React.Component {
         </Picker>
         <Text style={{color: 'white', fontSize: 28, paddingBottom: 5}}> Name the Player!</Text>
         <TextInput textAlign='center' onChangeText={(e)=>this.onUsernameChange(e)} value={this.state.username} style={styles.textInput}/>  
-        <Button onPress={this.getCharacter}  text="Let's Get It!" style={styles.homepageButton} textStyle={{color: 'blue', fontWeight: 'bold', fontSize: 15}}/>
+        <Button onPress={this.getCharacter}  text="Search" style={styles.homepageButton} textStyle={{color: 'blue', fontWeight: 'bold', fontSize: 15}}/>
         </View>
         <View style={styles.container2}>
         <View>
         <Text style={{color: 'white', fontSize: 12, paddingBottom: 5, marginRight: 0}}> Want to compare?</Text>
-        <Button text="Compare!" onPress={this.navigateToComparison} style={styles.footerButton} textStyle={{color: 'green', fontWeight: 'bold', fontSize: 15}}/>
+        <Button text="Compare!" onPress={this.navigateToComparison} style={styles.footerButton} textStyle={{color: 'orange', fontWeight: 'bold', fontSize: 15}}/>
         </View>
         <View>
         <Images/>
@@ -119,8 +119,8 @@ const styles = StyleSheet.create({
   footerButton: {
     alignItems: 'center',
     justifyContent: 'center',
-    height: 35,
-    width: 115,
+    height: 30,
+    width: 110,
     borderRadius: 15,
     backgroundColor: 'white',
     marginBottom: 100,

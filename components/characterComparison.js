@@ -13,6 +13,9 @@ const images = [
     require('../Images/raven2.jpeg'),
     require('../Images/battle.jpg'),
     require('../Images/raven-fortnite.jpg'),
+    require('../Images/raven-fortnite.jpg'),
+    require('../Images/hello.jpg'),
+    require('../Images/fortnite-wallpaper2.jpg'),
 ]
 
 const generateName = tag => {
@@ -48,7 +51,7 @@ const ComparisonInfo = props => {
 
   return (
     <View style={styles.container}>
-    <ImageBackground source={images[Math.floor(Math.random() * 7)]} style={styles.backgroundImage}>
+    <ImageBackground source={images[Math.floor(Math.random() * 9)]} style={styles.backgroundImage}>
     <ScrollView>
     <View style={styles.statBox}>
     <View style={{flexDirection: 'row'}}>
@@ -60,11 +63,12 @@ const ComparisonInfo = props => {
     </View>
     <View style={{ flexDirection: 'row',}}>
         <View style={styles.dataStyling}>
-        {
+        <Text style={{color: 'blue', fontWeight: 'bold', fontSize: 21, paddingBottom: 8}}>{props.person1_name}</Text>
+        {    
             Object.values(stats).map((x, i) => (
                 <View>
-                <React.Fragment key={i}>
-                    <Text style={{color: 'red', fontWeight: 'bold', fontSize: 16,}}>{generateName(titles[i])}</Text>
+                <React.Fragment key={x}>
+                    <Text style={{color: 'red', fontWeight: 'bold', fontSize: 15,}}>{generateName(titles[i])}</Text>
                     <Text style={{color: 'black', fontSize: 12, fontFamily: 'Helvetica'}}># of Kills:{x.kills.displayValue}</Text>
                     <Text style={{color: 'black', fontSize: 12, fontFamily: 'Helvetica'}}># of Matches:{x.matches.displayValue}</Text>
                     <Text style={{color: 'black', fontSize: 12, fontFamily: 'Helvetica'}}>Kills/Game Ratio: {x.kpg.displayValue}</Text>
@@ -74,11 +78,12 @@ const ComparisonInfo = props => {
         }
         </View>
         <View style={styles.dataStyling}>
+        <Text style={{color: 'blue', fontWeight: 'bold', fontSize: 21, paddingBottom: 8}}>{props.person2_name}</Text>
         {
             Object.values(person2_stats).map((x, i) => (
                 <View>
                 <React.Fragment key={i}>
-                    <Text style={{color: 'red', fontWeight: 'bold', fontSize: 16,}}>{generateName(titles[i])}</Text>
+                    <Text style={{color: 'red', fontWeight: 'bold', fontSize: 15,}}>{generateName(titles[i])}</Text>
                     <Text style={{color: 'black', fontSize: 12, fontFamily: 'Helvetica'}}># of Kills:{x.kills.displayValue}</Text>
                     <Text style={{color: 'black', fontSize: 12, fontFamily: 'Helvetica'}}># of Matches:{x.matches.displayValue}</Text>
                     <Text style={{color: 'black', fontSize: 12, fontFamily: 'Helvetica'}}>Kills/Game Ratio: {x.kpg.displayValue}</Text>
@@ -99,18 +104,23 @@ class CharacterSearch extends React.Component {
     static navigationOptions = ({ navigation }) => {
         
         return {
-            title: `${navigation.getParam('header', 'Person 1' )} vs. ${navigation.getParam('header1', 'Person 2' )}`
+            title: `Let's Compare`
         };
     };
 
+        //  ${navigation.getParam('header', 'Person 1' )} vs. ${navigation.getParam('header1', 'Person 2' )}
 
     render() { 
         let stats = this.props.navigation.getParam('comparisonStats', {});
         let person2_stats = this.props.navigation.getParam('comparisonStats1', {});
+        let person1_name = this.props.navigation.getParam('header', {});
+        let person2_name = this.props.navigation.getParam('header1', {});
         return (
             <ComparisonInfo 
                 stats={stats} 
+                person1_name={person1_name}
                 person2_stats={person2_stats}
+                person2_name={person2_name}
             />
         )
     }
@@ -154,7 +164,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     paddingTop: 15,
     paddingBottom: 15,
-    paddingLeft: 10
+    paddingLeft: 10,
     }
 });
 
