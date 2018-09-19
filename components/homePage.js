@@ -26,6 +26,12 @@ class HomePage extends React.Component {
        })
      }
 
+     onPickerChange = (itemValue, itemIndex) => {
+      this.setState({
+        platform: itemValue
+      })
+     }
+
     getCharacter = e => {
         e.preventDefault()
         axios.get(
@@ -58,7 +64,7 @@ class HomePage extends React.Component {
             itemStyle={styles.pickerItemStyle}
             style={styles.pickerStyle}
             selectedValue={this.state.platform}
-            onValueChange={(itemValue, itemIndex) => this.setState({platform: itemValue})}
+            onValueChange={this.onPickerChange}
             >
             <Picker.Item label="PC" value="pc"/>
             <Picker.Item label="PS4" value="psn"/>

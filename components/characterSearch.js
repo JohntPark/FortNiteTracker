@@ -53,19 +53,19 @@ const CharacterInfo = props => {
     <View style={styles.statBox}>
     <View style={{flexDirection: 'row'}}>
     
-    <Image style={{height: 100, width: 100, justifyContent: 'flex-start', alignItems: 'flex-start'}} source={require(`../Images/dance2.gif`)}/>
-    <Image style={{height: 100, width: 100, justifyContent: 'flex-start', alignItems: 'flex-start'}} source={require(`../Images/dancing.gif`)}/>
-    <Image style={{height: 100, width: 100, justifyContent: 'flex-start', alignItems: 'flex-start'}} source={require(`../Images/dance3.gif`)}/>
+    <Image style={styles.dancingGif} source={require(`../Images/dance2.gif`)}/>
+    <Image style={styles.dancingGif} source={require(`../Images/dancing.gif`)}/>
+    <Image style={styles.dancingGif} source={require(`../Images/dance3.gif`)}/>
     
     </View>
         <View style={{flexDirection: 'row'}}>
             <View style={styles.dataStyling}>
         {
             Object.values(stats).map((x, i) => (
-                <View style={{justifyContent: 'center', alignItems: 'center'}}>
+                <View style={styles.mapStyle}>
                 <React.Fragment key={i}>
-                    <Text style={{color: 'red', fontWeight: 'bold', fontSize: 20,}}>{generateName(titles[i])}</Text>
-                    <Text style={{color: 'black',}}># of Kills:{x.kills.displayValue}</Text>
+                    <Text style={styles.statType}>{generateName(titles[i])}</Text>
+                    <Text style={{color: 'black'}}># of Kills:{x.kills.displayValue}</Text>
                     <Text style={{color: 'black'}}># of Matches:{x.matches.displayValue}</Text>
                     <Text style={{color: 'black'}}>Kills/Game Ratio: {x.kpg.displayValue}</Text>
                 </React.Fragment>
@@ -102,22 +102,6 @@ class CharacterSearch extends React.Component {
  
 
 const styles = StyleSheet.create({
-  userBox: {
-    width: 300,
-    height: 50,
-    borderColor: "red",
-    borderWidth: 1
-  },
-  title: {
-    fontSize: 50,
-    marginTop: 40,
-    marginBottom: 20
-  },
-  statBox: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex: 1, 
-  },
   container: {
     flex: 1,
     justifyContent: 'flex-start',
@@ -128,6 +112,17 @@ const styles = StyleSheet.create({
     height: 400,
     width: 400,
     flex: 1,
+  },
+  statBox: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1, 
+  },
+  dancingGif: {
+    height: 100, 
+    width: 100,
+    justifyContent: 'flex-start', 
+    alignItems: 'flex-start'
   },
   dataStyling: {
     backgroundColor: '#ffffff',
@@ -140,7 +135,16 @@ const styles = StyleSheet.create({
     paddingTop: 15,
     paddingBottom: 15,
     paddingLeft: 10
-    }
+  },
+  mapStyle: {
+    justifyContent: 'center', 
+    alignItems: 'center'
+  },
+  statType: {
+    color: 'red', 
+    fontWeight: 'bold', 
+    fontSize: 20,
+  }
 });
 
 export default CharacterSearch;

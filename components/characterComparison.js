@@ -3,6 +3,7 @@ import { View, ScrollView, Text, Image, StyleSheet, ImageBackground } from "reac
 import Button from "./button";
 import HomePage from "./homePage";
 import App from "../App";
+import { stat } from "fs";
 
 
 const images = [
@@ -56,37 +57,37 @@ const ComparisonInfo = props => {
     <View style={styles.statBox}>
     <View style={{flexDirection: 'row'}}>
     
-    <Image style={{height: 100, width: 100, justifyContent: 'flex-start', alignItems: 'flex-start'}} source={require(`../Images/dance2.gif`)}/>
-    <Image style={{height: 100, width: 100, justifyContent: 'flex-start', alignItems: 'flex-start'}} source={require(`../Images/dancing.gif`)}/>
-    <Image style={{height: 100, width: 100, justifyContent: 'flex-start', alignItems: 'flex-start'}} source={require(`../Images/dance3.gif`)}/>
+    <Image style={styles.dancingGif} source={require(`../Images/dance2.gif`)}/>
+    <Image style={styles.dancingGif} source={require(`../Images/dancing.gif`)}/>
+    <Image style={styles.dancingGif} source={require(`../Images/dance3.gif`)}/>
     
     </View>
     <View style={{ flexDirection: 'row',}}>
         <View style={styles.dataStyling}>
-        <Text style={{color: 'blue', fontWeight: 'bold', fontSize: 21, paddingBottom: 8}}>{props.person1_name}</Text>
+        <Text style={styles.personName}>{props.person1_name}</Text>
         {    
             Object.values(stats).map((x, i) => (
                 <View style={{paddingBottom: 10}}>
                 <React.Fragment key={i}>
-                    <Text style={{color: 'red', fontWeight: 'bold', fontSize: 15,}}>{generateName(titles[i])}</Text>
-                    <Text style={{color: 'black', fontSize: 12, fontFamily: 'Helvetica'}}># of Kills:{x.kills.displayValue}</Text>
-                    <Text style={{color: 'black', fontSize: 12, fontFamily: 'Helvetica'}}># of Matches:{x.matches.displayValue}</Text>
-                    <Text style={{color: 'black', fontSize: 12, fontFamily: 'Helvetica'}}>Kills/Game Ratio: {x.kpg.displayValue}</Text>
+                    <Text style={styles.statType}>{generateName(titles[i])}</Text>
+                    <Text style={styles.gameNumbers}># of Kills:{x.kills.displayValue}</Text>
+                    <Text style={styles.gameNumbers}># of Matches:{x.matches.displayValue}</Text>
+                    <Text style={styles.gameNumbers}>Kills/Game Ratio: {x.kpg.displayValue}</Text>
                 </React.Fragment>
                 </View>
             ))
         }
         </View>
         <View style={styles.dataStyling}>
-        <Text style={{color: 'blue', fontWeight: 'bold', fontSize: 21, paddingBottom: 8}}>{props.person2_name}</Text>
+        <Text style={styles.personName}>{props.person2_name}</Text>
         {
             Object.values(person2_stats).map((x, i) => (
                 <View style={{paddingBottom: 10}}>
                 <React.Fragment key={i}>
-                    <Text style={{color: 'red', fontWeight: 'bold', fontSize: 15,}}>{generateName(titles[i])}</Text>
-                    <Text style={{color: 'black', fontSize: 12, fontFamily: 'Helvetica'}}># of Kills:{x.kills.displayValue}</Text>
-                    <Text style={{color: 'black', fontSize: 12, fontFamily: 'Helvetica'}}># of Matches:{x.matches.displayValue}</Text>
-                    <Text style={{color: 'black', fontSize: 12, fontFamily: 'Helvetica'}}>Kills/Game Ratio: {x.kpg.displayValue}</Text>
+                    <Text style={styles.statType}>{generateName(titles[i])}</Text>
+                    <Text style={styles.gameNumbers}># of Kills:{x.kills.displayValue}</Text>
+                    <Text style={styles.gameNumbers}># of Matches:{x.matches.displayValue}</Text>
+                    <Text style={styles.gameNumbers}>Kills/Game Ratio: {x.kpg.displayValue}</Text>
                 </React.Fragment>
                 </View>
             ))
@@ -143,21 +144,16 @@ const styles = StyleSheet.create({
     width: 400,
     flex: 1,
   },
-  userBox: {
-    width: 300,
-    height: 50,
-    borderColor: "red",
-    borderWidth: 1
-  },
-  title: {
-    fontSize: 50,
-    marginTop: 40,
-    marginBottom: 20
-  },
   statBox: {
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1, 
+  },
+  dancingGif: {
+    height: 100, 
+    width: 100,
+    justifyContent: 'flex-start', 
+    alignItems: 'flex-start'
   },
   dataStyling: {
     backgroundColor: '#ffffff',
@@ -169,7 +165,24 @@ const styles = StyleSheet.create({
     paddingTop: 15,
     paddingBottom: 15,
     paddingLeft: 10,
-    }
+    },
+  personName: {
+    color: 'blue', 
+    fontWeight: 'bold', 
+    fontSize: 21, 
+    paddingBottom: 8
+  },
+  statType : {
+    color: 'red', 
+    fontWeight: 'bold', 
+    fontSize: 15
+  },
+  gameNumbers: {
+    color: 'black', 
+    fontSize: 12, 
+    fontFamily: 'Helvetica'
+  }
+
 });
 
 export default CharacterSearch;
