@@ -11,7 +11,6 @@ class HomePage extends React.Component {
       platform: 'pc',
       username: '',
       badEntry: false,
-      isLoading: false
      }
 
      static navigationOptions = {
@@ -36,6 +35,13 @@ class HomePage extends React.Component {
             }}
         )
         .then(res=> {
+
+          if (res.data.error) {
+            this.setState({
+              badEntry: true
+            })
+            return;
+          }
             this.props.navigation.navigate('CharacterPage', { fortniteStats: res.data.stats, header: res.data.epicUserHandle })
         })
     }
@@ -60,6 +66,10 @@ class HomePage extends React.Component {
         </Picker>
         <Text style={{color: 'white', fontSize: 28, paddingBottom: 5}}> Name the Player!</Text>
         <TextInput textAlign='center' onChangeText={(e)=>this.onUsernameChange(e)} value={this.state.username} style={styles.textInput}/>  
+        { 
+          this.state.badEntry && 
+          <Text style={{color: 'red', fontSize: 18, paddingBottom: 5}}> Please check your platform or user names</Text>
+        }
         <Button onPress={this.getCharacter}  text="Search" style={styles.homepageButton} textStyle={{color: 'blue', fontWeight: 'bold', fontSize: 15}}/>
         </View>
         <View style={styles.container2}>

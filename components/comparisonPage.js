@@ -54,9 +54,28 @@ class ComparisonPage extends React.Component {
             
         ];
 
+        // console.log('username1:', this.state.username1)
+        // console.log('username2:', this.state.username2)
+
+        if (this.state.username1.length < 3 || this.state.username2.length < 3) {
+            this.setState({
+                badEntry: true
+            });
+            return;
+        }
+
         Promise.all(promises)
             .then(res => { 
                 console.log(res);
+
+                if (res[0].data.error || res[1].data.error ) {
+                    console.log('error')
+                    this.setState({
+                        badEntry: true
+                    });
+                    return;
+                }
+                
                 this.props.navigation.navigate('CharacterComparison', { 
                     comparisonStats: res[0].data.stats, 
                     header: res[0].data.epicUserHandle,
@@ -64,6 +83,10 @@ class ComparisonPage extends React.Component {
                     header1: res[1].data.epicUserHandle,
                 })
             })
+            // .catch(error => {
+            //     console.log(error);
+            // });
+            
     }
 
     characterComparisonButton = e => {
@@ -80,7 +103,7 @@ class ComparisonPage extends React.Component {
             <View style={styles.container}>
              <ImageBackground source={require('../Images/ironman.jpg')} style={styles.backgroundImage}>
                     <View style={styles.mainInputBox}>
-                    <Text style={{color: 'black', fontSize: 26, fontWeight: 'bold', marginTop: 80, paddingBottom: 25}}> Compare Two Players</Text>
+                    <Text style={{color: 'black', fontSize: 26, fontWeight: 'bold', marginTop: 70, paddingBottom: 15}}> Compare Two Players</Text>
                     <Text style={{color: 'black', fontSize: 25, paddingBottom: 5}}> Choose your platform</Text>
                     <Picker 
                         itemStyle={{color: 'white', height: 44, fontWeight: 'bold', backgroundColor: 'black', opacity: .75}}
@@ -96,6 +119,11 @@ class ComparisonPage extends React.Component {
                     <TextInput textAlign='center' onChangeText={(e)=>this.onPersonOneChange(e)} value={this.state.username1} style={styles.textInput}/>  
                     <Text style={{color: 'black', fontSize: 28, paddingBottom: 5}}> Name the Second Player!</Text>
                     <TextInput textAlign='center' onChangeText={(e)=>this.onPersonTwoChange(e)} value={this.state.username2} style={styles.textInput2}/>  
+                    { 
+                        this.state.badEntry && 
+                        <Text style={{color: 'red', fontSize: 18, paddingBottom: 5}}> Please check your platform or user names</Text>
+                    }
+                    
                     <Button onPress={this.characterComparisonButton} text="Let's Get It!" style={styles.homepageButton} textStyle={{color: 'blue', fontWeight: 'bold', fontSize: 15}}/>
                     </View>
                     <View style={styles.container2}>
@@ -125,8 +153,8 @@ const styles = StyleSheet.create({
       marginRight: 20,
       opacity: .7,
       backgroundColor: 'white',
-      marginTop: 150,
-      paddingBottom: 90,
+      marginTop: 170,
+      paddingBottom: 50,
       borderColor: 'blue',
       borderWidth: 1
       
@@ -158,7 +186,7 @@ const styles = StyleSheet.create({
       borderColor: 'black',
       color: 'black',
       marginTop: 10,
-      marginBottom: 50,
+      marginBottom: 30,
       paddingBottom: 5
     },
     homepageButton: {

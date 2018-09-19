@@ -66,8 +66,8 @@ const ComparisonInfo = props => {
         <Text style={{color: 'blue', fontWeight: 'bold', fontSize: 21, paddingBottom: 8}}>{props.person1_name}</Text>
         {    
             Object.values(stats).map((x, i) => (
-                <View>
-                <React.Fragment key={x}>
+                <View style={{paddingBottom: 10}}>
+                <React.Fragment key={i}>
                     <Text style={{color: 'red', fontWeight: 'bold', fontSize: 15,}}>{generateName(titles[i])}</Text>
                     <Text style={{color: 'black', fontSize: 12, fontFamily: 'Helvetica'}}># of Kills:{x.kills.displayValue}</Text>
                     <Text style={{color: 'black', fontSize: 12, fontFamily: 'Helvetica'}}># of Matches:{x.matches.displayValue}</Text>
@@ -81,7 +81,7 @@ const ComparisonInfo = props => {
         <Text style={{color: 'blue', fontWeight: 'bold', fontSize: 21, paddingBottom: 8}}>{props.person2_name}</Text>
         {
             Object.values(person2_stats).map((x, i) => (
-                <View>
+                <View style={{paddingBottom: 10}}>
                 <React.Fragment key={i}>
                     <Text style={{color: 'red', fontWeight: 'bold', fontSize: 15,}}>{generateName(titles[i])}</Text>
                     <Text style={{color: 'black', fontSize: 12, fontFamily: 'Helvetica'}}># of Kills:{x.kills.displayValue}</Text>
@@ -104,8 +104,12 @@ class CharacterSearch extends React.Component {
     static navigationOptions = ({ navigation }) => {
         
         return {
-            title: `Let's Compare`
-        };
+            title: `Let's Compare`,
+        headerStyle: {
+            backgroundColor: 'teal'
+        },
+        headerTintColor: 'white'
+        }
     };
 
         //  ${navigation.getParam('header', 'Person 1' )} vs. ${navigation.getParam('header1', 'Person 2' )}

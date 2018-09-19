@@ -14,7 +14,7 @@ const RootStack = createStackNavigator(
         CharacterComparison: CharacterComparison
     },
     {
-        initialRouteName: 'ComparisonPage'
+        initialRouteName: 'Home'
     }
 )
 
