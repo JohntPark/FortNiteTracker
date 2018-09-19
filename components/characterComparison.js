@@ -1,9 +1,6 @@
 import React from "react";
 import { View, ScrollView, Text, Image, StyleSheet, ImageBackground } from "react-native";
-import Button from "./button";
-import HomePage from "./homePage";
-import App from "../App";
-import { stat } from "fs";
+
 
 
 const images = [
@@ -84,7 +81,7 @@ const ComparisonInfo = props => {
             Object.values(person2_stats).map((x, i) => (
                 <View style={{paddingBottom: 10}}>
                 <React.Fragment key={i}>
-                    <Text style={styles.statType}>{generateName(titles[i])}</Text>
+                    <Text style={styles.statType}>{generateName(person2_titles[i])}</Text>
                     <Text style={styles.gameNumbers}># of Kills:{x.kills.displayValue}</Text>
                     <Text style={styles.gameNumbers}># of Matches:{x.matches.displayValue}</Text>
                     <Text style={styles.gameNumbers}>Kills/Game Ratio: {x.kpg.displayValue}</Text>

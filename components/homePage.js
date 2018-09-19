@@ -1,8 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View, ImageBackground, TextInput, Picker, Image } from 'react-native';
+import { StyleSheet, Text, View, ImageBackground, TextInput, Picker, } from 'react-native';
 import Button from './button';
 import axios from 'axios';
-import App from '../app';
 import Images from './images';
 import APIKey from '../config';
 
@@ -26,11 +25,11 @@ class HomePage extends React.Component {
        })
      }
 
-     onPickerChange = (itemValue, itemIndex) => {
-      this.setState({
-        platform: itemValue
-      })
-     }
+    //  onPickerChange = (itemValue, itemIndex) => {
+    //   this.setState({
+    //     platform: itemValue
+    //   })
+    //  }
 
     getCharacter = e => {
         e.preventDefault()
@@ -64,7 +63,7 @@ class HomePage extends React.Component {
             itemStyle={styles.pickerItemStyle}
             style={styles.pickerStyle}
             selectedValue={this.state.platform}
-            onValueChange={this.onPickerChange}
+            // onValueChange={this.onPickerChange}
             >
             <Picker.Item label="PC" value="pc"/>
             <Picker.Item label="PS4" value="psn"/>

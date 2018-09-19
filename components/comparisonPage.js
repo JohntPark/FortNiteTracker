@@ -1,5 +1,5 @@
 import React from "react";
-import { View, TextInput, ScrollView, Text, Image, StyleSheet, ImageBackground, Picker } from "react-native";
+import { View, TextInput, Text, StyleSheet, ImageBackground, Picker } from "react-native";
 import Button from "./button";
 import HomePage from "./homePage";
 import App from "../App";

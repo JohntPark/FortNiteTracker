@@ -1,8 +1,5 @@
 import React from "react";
 import { View, ScrollView, Text, Image, StyleSheet, ImageBackground } from "react-native";
-import Button from "./button";
-import HomePage from "./homePage";
-import App from "../App";
 
 
 const images = [
