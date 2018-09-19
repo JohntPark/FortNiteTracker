@@ -103,11 +103,11 @@ class ComparisonPage extends React.Component {
             <View style={styles.container}>
              <ImageBackground source={require('../Images/ironman.jpg')} style={styles.backgroundImage}>
                     <View style={styles.mainInputBox}>
-                    <Text style={{color: 'black', fontSize: 26, fontWeight: 'bold', marginTop: 70, paddingBottom: 15}}> Compare Two Players</Text>
-                    <Text style={{color: 'black', fontSize: 25, paddingBottom: 5}}> Choose your platform</Text>
+                    <Text style={styles.compareStyle}> Compare Two Players</Text>
+                    <Text style={styles.platform}> Choose your platform</Text>
                     <Picker 
-                        itemStyle={{color: 'white', height: 44, fontWeight: 'bold', backgroundColor: 'black', opacity: .75}}
-                        style={{ width: 85, height: 44,  paddingTop: 0, marginBottom: 5 }}
+                        itemStyle={styles.pickerItemStyle}
+                        style={styles.pickerStyle}
                         selectedValue={this.state.platform}
                         onValueChange={(itemValue, itemIndex) => this.setState({platform: itemValue})}
                         >
@@ -115,21 +115,21 @@ class ComparisonPage extends React.Component {
                         <Picker.Item label="PS4" value="psn"/>
                         <Picker.Item label="XBOX" value="xbl"/>
                     </Picker>
-                    <Text style={{color: 'black', fontSize: 28, paddingBottom: 5}}> Name the First Player!</Text>
+                    <Text style={styles.playerText}> Name the First Player!</Text>
                     <TextInput textAlign='center' onChangeText={(e)=>this.onPersonOneChange(e)} value={this.state.username1} style={styles.textInput}/>  
-                    <Text style={{color: 'black', fontSize: 28, paddingBottom: 5}}> Name the Second Player!</Text>
+                    <Text style={styles.playerText}> Name the Second Player!</Text>
                     <TextInput textAlign='center' onChangeText={(e)=>this.onPersonTwoChange(e)} value={this.state.username2} style={styles.textInput2}/>  
                     { 
                         this.state.badEntry && 
                         <Text style={{color: 'red', fontSize: 18, paddingBottom: 5}}> Please check your platform or user names</Text>
                     }
                     
-                    <Button onPress={this.characterComparisonButton} text="Let's Get It!" style={styles.homepageButton} textStyle={{color: 'blue', fontWeight: 'bold', fontSize: 15}}/>
+                    <Button onPress={this.characterComparisonButton} text="Compare" style={styles.compareButton} textStyle={styles.compareButtonText}/>
                     </View>
                     <View style={styles.container2}>
                     <View>
-                        <Text style={{color: 'white', fontSize: 12, paddingBottom: 5, marginRight: 0, marginLeft: 5}}> See your Stats?</Text>
-                        <Button text="Single Stats" onPress={this.navigateToHome} style={styles.footerButton} textStyle={{color: 'green', fontWeight: 'bold', fontSize: 15}}/>
+                        <Text style={styles.singleStatsText}> See your Stats?</Text>
+                        <Button text="Single Stats" onPress={this.navigateToHome} style={styles.footerButton} textStyle={styles.footerButtonText}/>
                     </View>
                     <View>
                     <Images/>
@@ -146,6 +146,13 @@ const styles = StyleSheet.create({
       flexDirection: 'column',
       backgroundColor: '#fff',
     },
+    backgroundImage: {
+        height: 400,
+        width: 400,
+        flex: 1,
+        marginRight: 100,
+        backgroundColor: 'transparent',
+    },
     mainInputBox: {
       alignItems: 'center',
       justifyContent: 'center',
@@ -156,17 +163,38 @@ const styles = StyleSheet.create({
       marginTop: 170,
       paddingBottom: 50,
       borderColor: 'blue',
-      borderWidth: 1
-      
+      borderWidth: 1   
     },
-    backgroundImage: {
-      height: 400,
-      width: 400,
-      flex: 1,
-      marginRight: 100,
-      backgroundColor: 'transparent',
+    compareStyle: {
+      color: 'black', 
+      fontSize: 26, 
+      fontWeight: 'bold', 
+      marginTop: 70, 
+      paddingBottom: 15
     },
-
+    platform: {
+      color: 'black', 
+      fontSize: 25, 
+      paddingBottom: 5
+    },
+    pickerItemStyle: {
+      color: 'white', 
+      height: 44, 
+      fontWeight: 'bold', 
+      backgroundColor: 'black', 
+      opacity: .75
+    },
+    pickerStyle: {
+      width: 85, 
+      height: 44,  
+      paddingTop: 0, 
+      marginBottom: 5
+    },
+    playerText: {
+      color: 'black', 
+      fontSize: 28, 
+      paddingBottom: 5
+    },
     textInput: {
       height: 50,
       fontWeight: 'bold',
@@ -189,7 +217,7 @@ const styles = StyleSheet.create({
       marginBottom: 30,
       paddingBottom: 5
     },
-    homepageButton: {
+    compareButton: {
         alignItems: 'center',
         justifyContent: 'center',
         height: 35,
@@ -200,6 +228,23 @@ const styles = StyleSheet.create({
         borderColor: 'black',
         borderWidth: 2
     },
+    compareButtonText: {
+        color: 'blue', 
+        fontWeight: 'bold', 
+        fontSize: 15
+    },
+    container2: {
+      justifyContent: 'space-between',
+      flexDirection: 'row',
+      marginRight: 35
+    },
+    singleStatsText: {
+      color: 'white', 
+      fontSize: 12, 
+      paddingBottom: 5, 
+      marginRight: 0, 
+      marginLeft: 5
+    },
     footerButton: {
       alignItems: 'center',
       justifyContent: 'center',
@@ -209,10 +254,10 @@ const styles = StyleSheet.create({
       backgroundColor: 'white',
       marginBottom: 100,
     },
-    container2: {
-        justifyContent: 'space-between',
-        flexDirection: 'row',
-        marginRight: 35
+    footerButtonText: {
+      color: 'green', 
+      fontWeight: 'bold', 
+      fontSize: 15
     }
   });
 export default ComparisonPage;

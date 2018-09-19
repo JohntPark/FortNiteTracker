@@ -132,6 +132,17 @@ class CharacterSearch extends React.Component {
  
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    backgroundColor: "black"
+  },
+  backgroundImage: {
+    height: 400,
+    width: 400,
+    flex: 1,
+  },
   userBox: {
     width: 300,
     height: 50,
@@ -147,17 +158,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1, 
-  },
-  container: {
-    flex: 1,
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    backgroundColor: "black"
-  },
-  backgroundImage: {
-    height: 400,
-    width: 400,
-    flex: 1,
   },
   dataStyling: {
     backgroundColor: '#ffffff',

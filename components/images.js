@@ -5,7 +5,7 @@ import {Image, View, StyleSheet} from 'react-native'
 const Images = props => {
     return ( 
         <View>
-        <View style={{flexDirection: 'row'}}>
+        <View style={styles.imagesFormat}>
         <Image source={require('../Images/epicgames-logo.png')} style={styles.miniIcon}/>
         <Image source={require('../Images/twitter-logo.png')} style={styles.miniIcon}/>
         <Image source={require('../Images/snapchat-logo.png')} style={styles.miniIcon}/>
@@ -18,10 +18,13 @@ const Images = props => {
  
 const styles = StyleSheet.create({
     miniIcon: {
-        height: 18,
-        width: 18,
-        marginTop: 27,
+        height: 20,
+        width: 20,
+        marginTop: 28,
         backgroundColor: 'transparent',
+    },
+    imagesFormat: {
+        flexDirection: 'row'
     }
 })
 
