@@ -12,7 +12,6 @@ const images = [
     require('../Images/raven2.jpeg'),
     require('../Images/battle.jpg'),
     require('../Images/raven-fortnite.jpg'),
-    require('../Images/raven-fortnite.jpg'),
     require('../Images/hello.jpg'),
     require('../Images/fortnite-wallpaper2.jpg'),
     require("../Images/2018-fortnite-art.jpg")
@@ -51,7 +50,7 @@ const ComparisonInfo = props => {
 
   return (
     <View style={styles.container}>
-    <ImageBackground source={images[Math.floor(Math.random() * 9)]} style={styles.backgroundImage}>
+    <ImageBackground source={images[Math.floor(Math.random() * 10)]} style={styles.backgroundImage}>
     <ScrollView>
     <View style={styles.statBox}>
     <View style={{flexDirection: 'row'}}>

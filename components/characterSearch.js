@@ -49,7 +49,7 @@ const CharacterInfo = props => {
   return (
     <View style={styles.container}>
       <ImageBackground
-        source={images[Math.floor(Math.random() * 9)]}
+        source={images[Math.floor(Math.random() * 10)]}
         style={styles.backgroundImage}
       >
         <ScrollView>
@@ -130,10 +130,10 @@ const styles = StyleSheet.create({
     backgroundColor: "black"
   },
   backgroundImage: {
-    // height: 400,
+    height: 400,
     width: 400,
     flex: 1,
-    paddingBottom: 80
+    paddingBottom: 50
   },
   statBox: {
     alignItems: "center",
