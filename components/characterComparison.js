@@ -56,7 +56,7 @@ const ComparisonInfo = props => {
     <View style={styles.statBox}>
     <View style={{flexDirection: 'row'}}>
     
-    <Image style={styles.dancingGif} source={require(`../Images/dance2.gif`)}/>
+    <Image style={styles.dancingGif} source={require(`../Images/dancinggif2.gif`)}/>
     <Image style={styles.dancingGif} source={require(`../Images/dancing.gif`)}/>
     <Image style={styles.dancingGif} source={require(`../Images/dance3.gif`)}/>
     
@@ -68,8 +68,8 @@ const ComparisonInfo = props => {
             Object.values(stats).map((x, i) => (
                 <View style={{paddingBottom: 10}} key={i}>
                     <Text style={styles.statType}>{generateName(titles[i])}</Text>
-                    <Text style={styles.gameNumbers}># of Kills:{x.kills.displayValue}</Text>
-                    <Text style={styles.gameNumbers}># of Matches:{x.matches.displayValue}</Text>
+                    <Text style={styles.gameNumbers}># of Kills: {x.kills.displayValue}</Text>
+                    <Text style={styles.gameNumbers}># of Matches: {x.matches.displayValue}</Text>
                     <Text style={styles.gameNumbers}>Kills/Game Ratio: {x.kpg.displayValue}</Text>
                 </View>
             ))
@@ -81,8 +81,8 @@ const ComparisonInfo = props => {
             Object.values(person2_stats).map((x, i) => (
                 <View style={{paddingBottom: 10}} key={i}>
                     <Text style={styles.statType}>{generateName(person2_titles[i])}</Text>
-                    <Text style={styles.gameNumbers}># of Kills:{x.kills.displayValue}</Text>
-                    <Text style={styles.gameNumbers}># of Matches:{x.matches.displayValue}</Text>
+                    <Text style={styles.gameNumbers}># of Kills: {x.kills.displayValue}</Text>
+                    <Text style={styles.gameNumbers}># of Matches: {x.matches.displayValue}</Text>
                     <Text style={styles.gameNumbers}>Kills/Game Ratio: {x.kpg.displayValue}</Text>
                 </View>
             ))
@@ -102,7 +102,7 @@ class CharacterSearch extends React.Component {
     static navigationOptions = ({ navigation }) => {
         
         return {
-            title: `Let's Compare`,
+            title: `Who is Better?`,
         headerStyle: {
             backgroundColor: 'teal'
         },

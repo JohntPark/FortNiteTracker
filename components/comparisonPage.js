@@ -124,7 +124,7 @@ class ComparisonPage extends React.Component {
                     <TextInput textAlign='center' onChangeText={(e)=>this.onPersonTwoChange(e)} value={this.state.username2} style={styles.textInput2}/>  
                     { 
                         this.state.badEntry && 
-                        <Text style={{color: '#ff0000', fontWeight: 'bold', fontSize: 18, paddingBottom: 5}}> Please check your platform or user names</Text>
+                        <Text style={styles.recheckCharacter}> Please check your platform or user names</Text>
                     }
                     
                     <Button onPress={this.characterComparisonButton} text="Compare" style={styles.compareButton} textStyle={styles.compareButtonText}/>
@@ -159,13 +159,14 @@ const styles = StyleSheet.create({
     mainInputBox: {
       alignItems: 'center',
       justifyContent: 'center',
-      height: 480,
+      height: 510,
       marginRight: 20,
+      paddingRight: 10,
       opacity: .74,
       backgroundColor: 'white',
-      marginTop: 160,
-      marginBottom: 30,
-      paddingBottom: 30,
+      marginTop: 105,
+      marginBottom: 35,
+      paddingBottom: 20,
       borderColor: 'blue',
       borderWidth: 1   
     },
@@ -199,13 +200,15 @@ const styles = StyleSheet.create({
       color: 'darkblue', 
       fontSize: 22, 
       paddingBottom: 0,
-      fontFamily: 'Zapfino'
+      fontFamily: 'Zapfino',
+      fontWeight: 'bold'
     },
     playerText2: {
       color: 'darkmagenta', 
       fontSize: 20, 
       paddingBottom: 0,
-      fontFamily: 'Zapfino'
+      fontFamily: 'Zapfino',
+      fontWeight: 'bold'
     },
     textInput: {
       height: 50,
@@ -216,6 +219,7 @@ const styles = StyleSheet.create({
       borderColor: 'black',
       color: 'black',
       marginTop: 0,
+      marginBottom: 11,
       fontFamily: 'ChalkboardSE-Bold'
     },
     textInput2: {
@@ -226,10 +230,17 @@ const styles = StyleSheet.create({
       borderWidth: 2,
       borderColor: 'black',
       color: 'black',
-      marginTop: 10,
+      marginTop: 5,
       marginBottom: 0,
       paddingBottom: 0,
       fontFamily: 'ChalkboardSE-Bold'
+    },
+    recheckCharacter: {
+      color: '#ff0000', 
+      fontWeight: 'bold', 
+      fontSize: 18, 
+      paddingBottom: 5, 
+      paddingTop: 15
     },
     compareButton: {
         alignItems: 'center',
@@ -256,8 +267,7 @@ const styles = StyleSheet.create({
       color: 'white', 
       fontSize: 14, 
       paddingBottom: 5, 
-      marginRight: 0, 
-      marginLeft: 5
+      marginRight: 158
     },
     footerButton: {
       alignItems: 'center',

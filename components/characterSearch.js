@@ -57,7 +57,7 @@ const CharacterInfo = props => {
             <View style={{ flexDirection: "row" }}>
             <Image
                 style={styles.dancingGif}
-                source={require(`../Images/dance2.gif`)}
+                source={require(`../Images/dancinggif.gif`)}
             />
             <Image
                 style={styles.dancingGif}
@@ -76,11 +76,11 @@ const CharacterInfo = props => {
                         {generateName(titles[i])}
                     </Text>
                     <Text style={{ color: "black" }}>
-                        # of Kills:
+                        # of Kills: 
                         {x.kills.displayValue}
                     </Text>
                     <Text style={{ color: "black" }}>
-                        # of Matches:
+                        # of Matches: 
                         {x.matches.displayValue}
                     </Text>
                     <Text style={{ color: "black" }}>

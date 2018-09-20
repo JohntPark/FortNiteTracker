@@ -92,7 +92,7 @@ class HomePage extends React.Component {
               style={styles.textInput}
             />
             {this.state.badEntry && (
-              <Text style={{ color: "#ff0000", fontWeight: 'bold', fontSize: 18, paddingBottom: 5 }}>
+              <Text style={styles.recheckCharacter}>
                 {" "}
                 Please check your platform or user name
               </Text>
@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "flex-start",
     height: 450,
-    marginRight: 20,
+    marginRight: 21,
     opacity: .8,
     backgroundColor: 'grey',
     marginTop: 160,
@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
   platform: {
     color: "white",
     fontSize: 28,
-    paddingBottom: 5
+    paddingBottom: 15
   },
   pickerItemStyle: {
     color: "black",
@@ -173,23 +173,31 @@ const styles = StyleSheet.create({
     width: 85,
     height: 44,
     paddingTop: 0,
-    marginBottom: 30
+    marginBottom: 15
   },
   playerName: {
     color: "blue",
     fontSize: 24,
     fontFamily: 'Zapfino',
+    fontWeight: 'bold'
   },
   textInput: {
     backgroundColor: "transparent",
     height: 40,
-    width: 250,
+    width: 240,
     borderRadius: 15,
     borderWidth: 2,
     borderColor: "white",
     color: "black",
     marginTop: 0,
     fontFamily: 'AmericanTypewriter-Bold'
+  },
+  recheckCharacter: {
+    color: "#ff0000", 
+    fontWeight: 'bold', 
+    fontSize: 18, 
+    paddingBottom: 2, 
+    paddingTop: 15
   },
   homepageButton: {
     alignItems: "center",
@@ -208,22 +216,23 @@ const styles = StyleSheet.create({
   container2: {
     justifyContent: "space-between",
     flexDirection: "row",
-    marginRight: 35
+    marginRight: 38
   },
   compareText: {
     color: "white",
     fontSize: 14,
     paddingBottom: 5,
-    marginRight: 0
+    marginRight: 140
   },
   compareButton: {
     alignItems: "center",
     justifyContent: "center",
-    height: 30,
-    width: 120,
+    height: 35,
+    width: 115,
     borderRadius: 15,
     backgroundColor: "white",
-    marginBottom: 100
+    marginBottom: 100,
+    opacity: .8
   },
   compareStyle: {
     color: "orange",
