@@ -68,24 +68,27 @@ class ComparisonPage extends React.Component {
             .then(res => { 
                 console.log(res);
 
+                // if a player is not found, the server passes 'Player Not Found' 
+                // as a message in 'data.error'
                 if (res[0].data.error || res[1].data.error ) {
-                    console.log('error')
+                    console.log('Player Not Found')
                     this.setState({
                         badEntry: true
                     });
-                    return;
+                } else {
+                    this.props.navigation.navigate('CharacterComparison', { 
+                        comparisonStats: res[0].data.stats, 
+                        header: res[0].data.epicUserHandle,
+                        comparisonStats1: res[1].data.stats,
+                        header1: res[1].data.epicUserHandle,
+                        comparisonGraph: res[0].data.recentMatches,
+                        comparisonGraph1: res[1].data.recentMatches
+                    })
                 }
-                
-                this.props.navigation.navigate('CharacterComparison', { 
-                    comparisonStats: res[0].data.stats, 
-                    header: res[0].data.epicUserHandle,
-                    comparisonStats1: res[1].data.stats,
-                    header1: res[1].data.epicUserHandle,
-                })
             })
-            // .catch(error => {
-            //     console.log(error);
-            // });
+            .catch(error => {
+                console.log(error);
+            });
             
     }
 
@@ -115,13 +118,13 @@ class ComparisonPage extends React.Component {
                         <Picker.Item label="PS4" value="psn"/>
                         <Picker.Item label="XBOX" value="xbl"/>
                     </Picker>
-                    <Text style={styles.playerText}> Name the First Player!</Text>
+                    <Text style={styles.playerText1}> Name the First Player!</Text>
                     <TextInput textAlign='center' onChangeText={(e)=>this.onPersonOneChange(e)} value={this.state.username1} style={styles.textInput}/>  
-                    <Text style={styles.playerText}> Name the Second Player!</Text>
+                    <Text style={styles.playerText2}> Name the Second Player!</Text>
                     <TextInput textAlign='center' onChangeText={(e)=>this.onPersonTwoChange(e)} value={this.state.username2} style={styles.textInput2}/>  
                     { 
                         this.state.badEntry && 
-                        <Text style={{color: 'red', fontSize: 18, paddingBottom: 5}}> Please check your platform or user names</Text>
+                        <Text style={{color: '#ff0000', fontWeight: 'bold', fontSize: 18, paddingBottom: 5}}> Please check your platform or user names</Text>
                     }
                     
                     <Button onPress={this.characterComparisonButton} text="Compare" style={styles.compareButton} textStyle={styles.compareButtonText}/>
@@ -156,12 +159,13 @@ const styles = StyleSheet.create({
     mainInputBox: {
       alignItems: 'center',
       justifyContent: 'center',
-      flex: 1,
+      height: 480,
       marginRight: 20,
-      opacity: .7,
+      opacity: .74,
       backgroundColor: 'white',
-      marginTop: 170,
-      paddingBottom: 50,
+      marginTop: 160,
+      marginBottom: 30,
+      paddingBottom: 30,
       borderColor: 'blue',
       borderWidth: 1   
     },
@@ -169,7 +173,7 @@ const styles = StyleSheet.create({
       color: 'black', 
       fontSize: 26, 
       fontWeight: 'bold', 
-      marginTop: 70, 
+      marginTop: 20, 
       paddingBottom: 15
     },
     platform: {
@@ -182,7 +186,8 @@ const styles = StyleSheet.create({
       height: 44, 
       fontWeight: 'bold', 
       backgroundColor: 'black', 
-      opacity: .75
+      opacity: .75,
+      fontFamily: 'Papyrus'
     },
     pickerStyle: {
       width: 85, 
@@ -190,10 +195,17 @@ const styles = StyleSheet.create({
       paddingTop: 0, 
       marginBottom: 5
     },
-    playerText: {
-      color: 'black', 
-      fontSize: 28, 
-      paddingBottom: 5
+    playerText1: {
+      color: 'darkblue', 
+      fontSize: 22, 
+      paddingBottom: 0,
+      fontFamily: 'Zapfino'
+    },
+    playerText2: {
+      color: 'darkmagenta', 
+      fontSize: 20, 
+      paddingBottom: 0,
+      fontFamily: 'Zapfino'
     },
     textInput: {
       height: 50,
@@ -203,7 +215,8 @@ const styles = StyleSheet.create({
       borderWidth: 2,
       borderColor: 'black',
       color: 'black',
-      marginTop: 10,
+      marginTop: 0,
+      fontFamily: 'ChalkboardSE-Bold'
     },
     textInput2: {
       height: 50,
@@ -214,8 +227,9 @@ const styles = StyleSheet.create({
       borderColor: 'black',
       color: 'black',
       marginTop: 10,
-      marginBottom: 30,
-      paddingBottom: 5
+      marginBottom: 0,
+      paddingBottom: 0,
+      fontFamily: 'ChalkboardSE-Bold'
     },
     compareButton: {
         alignItems: 'center',
@@ -240,7 +254,7 @@ const styles = StyleSheet.create({
     },
     singleStatsText: {
       color: 'white', 
-      fontSize: 12, 
+      fontSize: 14, 
       paddingBottom: 5, 
       marginRight: 0, 
       marginLeft: 5
@@ -252,6 +266,7 @@ const styles = StyleSheet.create({
       width: 115,
       borderRadius: 15,
       backgroundColor: 'white',
+      opacity: .8,
       marginBottom: 100,
     },
     footerButtonText: {

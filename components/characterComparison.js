@@ -1,5 +1,6 @@
 import React from "react";
 import { View, ScrollView, Text, Image, StyleSheet, ImageBackground } from "react-native";
+import ComparisonGraph from './comparisonGraph'
 
 
 
@@ -61,37 +62,34 @@ const ComparisonInfo = props => {
     </View>
     <View style={{ flexDirection: 'row',}}>
         <View style={styles.dataStyling}>
-        <Text style={styles.personName}>{props.person1_name}</Text>
+        <Text style={styles.personName1}>{props.person1_name}</Text>
         {    
             Object.values(stats).map((x, i) => (
-                <View style={{paddingBottom: 10}}>
-                <React.Fragment key={i}>
+                <View style={{paddingBottom: 10}} key={i}>
                     <Text style={styles.statType}>{generateName(titles[i])}</Text>
                     <Text style={styles.gameNumbers}># of Kills:{x.kills.displayValue}</Text>
                     <Text style={styles.gameNumbers}># of Matches:{x.matches.displayValue}</Text>
                     <Text style={styles.gameNumbers}>Kills/Game Ratio: {x.kpg.displayValue}</Text>
-                </React.Fragment>
                 </View>
             ))
         }
         </View>
         <View style={styles.dataStyling}>
-        <Text style={styles.personName}>{props.person2_name}</Text>
+        <Text style={styles.personName2}>{props.person2_name}</Text>
         {
             Object.values(person2_stats).map((x, i) => (
-                <View style={{paddingBottom: 10}}>
-                <React.Fragment key={i}>
+                <View style={{paddingBottom: 10}} key={i}>
                     <Text style={styles.statType}>{generateName(person2_titles[i])}</Text>
                     <Text style={styles.gameNumbers}># of Kills:{x.kills.displayValue}</Text>
                     <Text style={styles.gameNumbers}># of Matches:{x.matches.displayValue}</Text>
                     <Text style={styles.gameNumbers}>Kills/Game Ratio: {x.kpg.displayValue}</Text>
-                </React.Fragment>
                 </View>
             ))
         }
         </View>
         </View>
     </View>
+    <ComparisonGraph comparisonGraph={props.comparisonGraph} comparisonGraph1={props.comparisonGraph1}/>
     </ScrollView>
     </ImageBackground>
     </View>
@@ -108,6 +106,9 @@ class CharacterSearch extends React.Component {
         },
         headerTintColor: 'white'
         }
+        titleStyle: {
+            fontFamily: 'Noteworthy'
+        }
     };
 
         //  ${navigation.getParam('header', 'Person 1' )} vs. ${navigation.getParam('header1', 'Person 2' )}
@@ -117,12 +118,16 @@ class CharacterSearch extends React.Component {
         let person2_stats = this.props.navigation.getParam('comparisonStats1', {});
         let person1_name = this.props.navigation.getParam('header', {});
         let person2_name = this.props.navigation.getParam('header1', {});
+        let comparisonGraph = this.props.navigation.getParam('comparisonGraph', {});
+        let comparisonGraph1 = this.props.navigation.getParam('comparisonGraph1', {})
         return (
             <ComparisonInfo 
                 stats={stats} 
                 person1_name={person1_name}
                 person2_stats={person2_stats}
                 person2_name={person2_name}
+                comparisonGraph={comparisonGraph}
+                comparisonGraph1={comparisonGraph1}
             />
         )
     }
@@ -163,8 +168,14 @@ const styles = StyleSheet.create({
     paddingBottom: 15,
     paddingLeft: 10,
     },
-  personName: {
-    color: 'blue', 
+  personName1: {
+    color: 'darkblue', 
+    fontWeight: 'bold', 
+    fontSize: 21, 
+    paddingBottom: 8
+  },
+  personName2: {
+    color: 'darkmagenta', 
     fontWeight: 'bold', 
     fontSize: 21, 
     paddingBottom: 8
