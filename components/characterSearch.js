@@ -18,7 +18,8 @@ const images = [
   require("../Images/battle.jpg"),
   require("../Images/raven-fortnite.jpg"),
   require("../Images/hello.jpg"),
-  require("../Images/fortnite-wallpaper2.jpg")
+  require("../Images/fortnite-wallpaper2.jpg"),
+  require("../Images/2018-fortnite-art.jpg")
 ];
 
 const generateName = tag => {
