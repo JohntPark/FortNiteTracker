@@ -28,7 +28,7 @@ class CharacterSearchRecentMatches extends React.PureComponent {
                         fill: 'black',
                         fontSize: 10,
                     }}
-                    numberOfTicks={10}
+                    numberOfTicks={8}
                     formatLabel={value => `${value}`}
                 />
                 <LineChart

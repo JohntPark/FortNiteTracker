@@ -1,6 +1,6 @@
 import React from "react";
 import { View, ScrollView, Text, Image, StyleSheet, ImageBackground } from "react-native";
-import ComparisonGraph from './comparisonGraph'
+// import ComparisonGraph from './comparisonGraph'
 
 
 
@@ -89,7 +89,7 @@ const ComparisonInfo = props => {
         </View>
         </View>
     </View>
-    <ComparisonGraph comparisonGraph={props.comparisonGraph} comparisonGraph1={props.comparisonGraph1}/>
+    {/* <ComparisonGraph comparisonGraph={props.comparisonGraph} comparisonGraph1={props.comparisonGraph1}/> */}
     </ScrollView>
     </ImageBackground>
     </View>
@@ -118,16 +118,16 @@ class CharacterSearch extends React.Component {
         let person2_stats = this.props.navigation.getParam('comparisonStats1', {});
         let person1_name = this.props.navigation.getParam('header', {});
         let person2_name = this.props.navigation.getParam('header1', {});
-        let comparisonGraph = this.props.navigation.getParam('comparisonGraph', {});
-        let comparisonGraph1 = this.props.navigation.getParam('comparisonGraph1', {})
+        // let comparisonGraph = this.props.navigation.getParam('comparisonGraph', {});
+        // let comparisonGraph1 = this.props.navigation.getParam('comparisonGraph1', {})
         return (
             <ComparisonInfo 
                 stats={stats} 
                 person1_name={person1_name}
                 person2_stats={person2_stats}
                 person2_name={person2_name}
-                comparisonGraph={comparisonGraph}
-                comparisonGraph1={comparisonGraph1}
+                // comparisonGraph={comparisonGraph}
+                // comparisonGraph1={comparisonGraph1}
             />
         )
     }

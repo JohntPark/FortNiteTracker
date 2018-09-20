@@ -32,11 +32,11 @@ class HomePage extends React.Component {
     });
   };
 
-  //  onPickerChange = (itemValue, itemIndex) => {
-  //   this.setState({
-  //     platform: itemValue
-  //   })
-  //  }
+   onPickerChange = (itemValue, itemIndex) => {
+    this.setState({
+      platform: itemValue
+    })
+   }
 
   getCharacter = e => {
     e.preventDefault();
@@ -78,7 +78,7 @@ class HomePage extends React.Component {
               itemStyle={styles.pickerItemStyle}
               style={styles.pickerStyle}
               selectedValue={this.state.platform}
-              // onValueChange={this.onPickerChange}
+              onValueChange={this.onPickerChange}
             >
               <Picker.Item label="PC" value="pc" />
               <Picker.Item label="PS4" value="psn" />
@@ -94,7 +94,7 @@ class HomePage extends React.Component {
             {this.state.badEntry && (
               <Text style={{ color: "#ff0000", fontWeight: 'bold', fontSize: 18, paddingBottom: 5 }}>
                 {" "}
-                Please check your platform or user names
+                Please check your platform or user name
               </Text>
             )}
             <Button
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
   mainInputBox: {
     alignItems: "center",
     justifyContent: "flex-start",
-    height: 430,
+    height: 450,
     marginRight: 20,
     opacity: .8,
     backgroundColor: 'grey',
@@ -177,7 +177,6 @@ const styles = StyleSheet.create({
   playerName: {
     color: "white",
     fontSize: 24,
-    paddingBottom: 5,
     fontFamily: 'Zapfino'
   },
   textInput: {
@@ -188,7 +187,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: "white",
     color: "black",
-    marginTop: 10,
+    marginTop: 0,
     fontFamily: 'AmericanTypewriter-Bold'
   },
   homepageButton: {

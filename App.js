@@ -6,7 +6,7 @@ import CharacterSearch from './components/characterSearch';
 import ComparisonPage from './components/comparisonPage';
 import CharacterComparison from './components/characterComparison'
 import CharacterSearchRecentMatches from './components/characterSearchRecentMatches';
-import ComparisonGraph from './components/comparisonGraph'
+// import ComparisonGraph from './components/comparisonGraph'
 
 const RootStack = createStackNavigator(
     {
@@ -15,7 +15,7 @@ const RootStack = createStackNavigator(
         ComparisonPage: ComparisonPage,
         CharacterComparison: CharacterComparison,
         CharacterGraphSolo: CharacterSearchRecentMatches,
-        ComparisonGraph: ComparisonGraph
+        // ComparisonGraph: ComparisonGraph
     },
     {
         initialRouteName: 'ComparisonPage'
