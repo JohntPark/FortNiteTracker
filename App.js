@@ -18,7 +18,7 @@ const RootStack = createStackNavigator(
         // ComparisonGraph: ComparisonGraph
     },
     {
-        initialRouteName: 'ComparisonPage'
+        initialRouteName: 'Home'
     }
 )
 

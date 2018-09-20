@@ -90,6 +90,7 @@ const ComparisonInfo = props => {
         </View>
         </View>
     </View>
+    
     {/* <ComparisonGraph comparisonGraph={props.comparisonGraph} comparisonGraph1={props.comparisonGraph1}/> */}
     </ScrollView>
     </ImageBackground>

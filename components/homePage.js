@@ -145,6 +145,7 @@ const styles = StyleSheet.create({
     marginTop: 160,
     paddingBottom: 30,
     marginBottom: 40,
+    paddingRight: 10,
     paddingTop: 0,
     borderWidth: 1  
   },
@@ -175,9 +176,9 @@ const styles = StyleSheet.create({
     marginBottom: 30
   },
   playerName: {
-    color: "white",
+    color: "blue",
     fontSize: 24,
-    fontFamily: 'Zapfino'
+    fontFamily: 'Zapfino',
   },
   textInput: {
     backgroundColor: "transparent",
@@ -219,7 +220,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     height: 30,
-    width: 110,
+    width: 120,
     borderRadius: 15,
     backgroundColor: "white",
     marginBottom: 100
