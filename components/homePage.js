@@ -60,6 +60,7 @@ class HomePage extends React.Component {
           } else {
             this.setState({
               isLoading: false,
+              badEntry: false,
               username: ''
             }, () => {
               this.props.navigation.navigate("CharacterPage", {
@@ -148,7 +149,7 @@ const styles = StyleSheet.create({
   backgroundImage: {
     height: window.height,
     width: window.width,
-    flex: 1
+    flex: 1,
   },
   mainInputBox: {
     alignItems: "center",
@@ -157,9 +158,9 @@ const styles = StyleSheet.create({
     width: '100%',
     opacity: .8,
     backgroundColor: 'grey',
-    marginTop: 160,
+    marginTop: 180,
     paddingBottom: 30,
-    marginBottom: 40,
+    marginBottom: 80,
     paddingTop: 0,
     borderWidth: 1  
   },
@@ -230,7 +231,7 @@ const styles = StyleSheet.create({
   container2: {
     justifyContent: "space-between",
     flexDirection: "row",
-    marginRight: 38
+    marginRight: 3
   },
   compareText: {
     color: "white",

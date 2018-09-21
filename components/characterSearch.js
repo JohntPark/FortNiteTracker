@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
   },
   backgroundImage: {
     height: window.height,
-    width: window.width,
+    width: '100%',
     flex: 1,
     paddingBottom: 50
   },

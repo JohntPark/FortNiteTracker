@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
   },
   backgroundImage: {
     height: window.height,
-    width: window.width,
+    width: '100%',
     flex: 1,
   },
   statBox: {
@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
     opacity: 0.75,  
     borderColor: 'blue',
     borderWidth: 1,
-    width: 185,
+    width: '47%',
     alignItems: 'flex-start',
     paddingTop: 15,
     paddingBottom: 15,

@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
     },
     backgroundImage: {
         height: window.height,
-        width: window.width,
+        width: '100%',
         flex: 1,
         backgroundColor: 'transparent',
     },
@@ -171,8 +171,8 @@ const styles = StyleSheet.create({
       opacity: .74,
       width: '100%',
       backgroundColor: 'white',
-      marginTop: 105,
-      marginBottom: 35,
+      marginTop: 130,
+      marginBottom: 50,
       paddingBottom: 20,
       borderColor: 'blue',
       borderWidth: 1   

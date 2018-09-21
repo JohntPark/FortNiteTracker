@@ -18,9 +18,9 @@ class CharacterSearchRecentMatches extends React.PureComponent {
 
         const contentInset = { top: 20, bottom: 30 }
         return (
-            <View style={{ height: 200, width: 370, backgroundColor: 'white', opacity: 0.6,}}>
+            <View style={{ height: 200, width: '100%', backgroundColor: 'white', opacity: 0.6,}}>
                 <Text > Recent Matches (Kills)</Text>
-            <View style={{ paddingLeft: 10, height: 200, width: 350, flexDirection: 'row' }}>
+            <View style={{ paddingLeft: 10, height: 200, width: '100%', flexDirection: 'row' }}>
                 <YAxis 
                     data={killsArr}
                     contentInset={contentInset}
