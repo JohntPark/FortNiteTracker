@@ -78,7 +78,8 @@ class ComparisonPage extends React.Component {
                 } else {
                     this.setState({
                         isLoading: false,
-                        username: ''
+                        username1: '',
+                        username2: ''
                     }, () => {
                     this.props.navigation.navigate('CharacterComparison', { 
                         comparisonStats: res[0].data.stats, 
@@ -136,7 +137,7 @@ class ComparisonPage extends React.Component {
                     </View>
 
                     <View style={styles.container2}>
-                    <View style>
+                    <View>
                         <Text style={styles.singleStatsText}> See your Stats?</Text>
                         <Button text="Single Stats" onPress={this.navigateToHome} style={styles.footerButton} textStyle={styles.footerButtonText}/>
                     </View>
