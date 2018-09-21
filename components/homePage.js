@@ -5,7 +5,8 @@ import {
   View,
   ImageBackground,
   TextInput,
-  Picker
+  Picker,
+  Image
 } from "react-native";
 import Button from "./button";
 import axios from "axios";
@@ -16,7 +17,8 @@ class HomePage extends React.Component {
   state = {
     platform: "pc",
     username: "",
-    badEntry: false
+    badEntry: false,
+    isLoading: false
   };
 
   static navigationOptions = {
@@ -40,28 +42,38 @@ class HomePage extends React.Component {
 
   getCharacter = e => {
     e.preventDefault();
-    axios.get(`https://api.fortnitetracker.com/v1/profile/${this.state.platform}/${this.state.username}`,
-      {
-        headers: {
-          "TRN-Api-Key": APIKey
-        }
-      })
-      .then(res => {
-        if (res.data.error) {
-          this.setState({
-            badEntry: true
-          });
-        } else {
-          this.props.navigation.navigate("CharacterPage", {
-            fortniteStats: res.data.stats,
-            header: res.data.epicUserHandle,
-            graphingDataSolo: res.data.recentMatches
-          });
-        }
-      })
-      .catch(err => {
-        console.log(err);
-      })
+    this.setState({
+      isLoading: true
+    }, () => {
+      axios.get(`https://api.fortnitetracker.com/v1/profile/${this.state.platform}/${this.state.username}`,
+        {
+          headers: {
+            "TRN-Api-Key": APIKey
+          }
+        })
+        .then(res => {
+          if (res.data.error) {
+            this.setState({
+              badEntry: true,
+              isLoading: false
+            });
+          } else {
+            this.setState({
+              isLoading: false,
+              username: ''
+            }, () => {
+              this.props.navigation.navigate("CharacterPage", {
+                fortniteStats: res.data.stats,
+                header: res.data.epicUserHandle,
+                graphingDataSolo: res.data.recentMatches,
+              });
+            })
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        })
+    })
   };
 
   render() {
@@ -103,6 +115,7 @@ class HomePage extends React.Component {
               style={styles.homepageButton}
               textStyle={styles.homePageTextStyle}
             />
+            {this.state.isLoading && <Image source={ require('../Images/dancing.gif')} style={{height: 200, width: 200}}/>}
           </View>
           <View style={styles.container2}>
             <View>
@@ -112,7 +125,9 @@ class HomePage extends React.Component {
                 onPress={this.navigateToComparison}
                 style={styles.compareButton}
                 textStyle={styles.compareStyle}
-              />
+                />
+                
+                
             </View>
             <View>
               <Images />
@@ -131,21 +146,20 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff"
   },
   backgroundImage: {
-    height: 400,
-    width: 400,
+    height: window.height,
+    width: window.width,
     flex: 1
   },
   mainInputBox: {
     alignItems: "center",
     justifyContent: "flex-start",
     height: 450,
-    marginRight: 21,
+    width: '100%',
     opacity: .8,
     backgroundColor: 'grey',
     marginTop: 160,
     paddingBottom: 30,
     marginBottom: 40,
-    paddingRight: 10,
     paddingTop: 0,
     borderWidth: 1  
   },

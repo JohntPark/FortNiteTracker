@@ -143,8 +143,8 @@ const styles = StyleSheet.create({
     backgroundColor: "black"
   },
   backgroundImage: {
-    height: 400,
-    width: 400,
+    height: window.height,
+    width: window.width,
     flex: 1,
   },
   statBox: {

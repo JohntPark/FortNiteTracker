@@ -1,5 +1,5 @@
 import React from "react";
-import { View, TextInput, Text, StyleSheet, ImageBackground, Picker } from "react-native";
+import { View, TextInput, Text, StyleSheet, ImageBackground, Picker, Image } from "react-native";
 import Button from "./button";
 import HomePage from "./homePage";
 import App from "../App";
@@ -35,7 +35,10 @@ class ComparisonPage extends React.Component {
            })
        }
 
-       getPerson1 = () => {
+       characterSearch = () => {
+        this.setState({
+            isLoading: true
+        }, () => {
         let promises = [ 
             axios.get(`https://api.fortnitetracker.com/v1/profile/${this.state.platform}/${this.state.username1}`,
                 {
@@ -53,29 +56,30 @@ class ComparisonPage extends React.Component {
             ),
             
         ];
-
-        // console.log('username1:', this.state.username1)
-        // console.log('username2:', this.state.username2)
-
         if (this.state.username1.length < 3 || this.state.username2.length < 3) {
             this.setState({
-                badEntry: true
+                badEntry: true,
+                isLoading: false
             });
             return;
         }
 
         Promise.all(promises)
             .then(res => { 
-                console.log(res);
 
                 // if a player is not found, the server passes 'Player Not Found' 
                 // as a message in 'data.error'
                 if (res[0].data.error || res[1].data.error ) {
                     console.log('Player Not Found')
                     this.setState({
-                        badEntry: true
+                        badEntry: true,
+                        isLoading: false
                     });
                 } else {
+                    this.setState({
+                        isLoading: false,
+                        username: ''
+                    }, () => {
                     this.props.navigation.navigate('CharacterComparison', { 
                         comparisonStats: res[0].data.stats, 
                         header: res[0].data.epicUserHandle,
@@ -84,18 +88,19 @@ class ComparisonPage extends React.Component {
                         comparisonGraph: res[0].data.recentMatches,
                         comparisonGraph1: res[1].data.recentMatches
                     })
+                    })
                 }
             })
             .catch(error => {
                 console.log(error);
             });
-            
+        })     
     }
 
     characterComparisonButton = e => {
         e.preventDefault();
 
-        this.getPerson1();
+        this.characterSearch();
     }
 
 
@@ -129,12 +134,14 @@ class ComparisonPage extends React.Component {
                     
                     <Button onPress={this.characterComparisonButton} text="Compare" style={styles.compareButton} textStyle={styles.compareButtonText}/>
                     </View>
+
                     <View style={styles.container2}>
-                    <View>
+                    <View style>
                         <Text style={styles.singleStatsText}> See your Stats?</Text>
                         <Button text="Single Stats" onPress={this.navigateToHome} style={styles.footerButton} textStyle={styles.footerButtonText}/>
                     </View>
-                    <View>
+                    {this.state.isLoading && <Image source={ require('../Images/dancing.gif')} style={{height: 180, alignItems: 'center', width: 210, flex: 1, marginBottom: 100}}/>}
+                    <View style = {{marginTop: 41, marginRight: -27}}>
                     <Images/>
                     </View>
                     </View>
@@ -150,19 +157,18 @@ const styles = StyleSheet.create({
       backgroundColor: '#fff',
     },
     backgroundImage: {
-        height: 400,
-        width: 400,
+        height: window.height,
+        width: window.width,
         flex: 1,
-        marginRight: 100,
         backgroundColor: 'transparent',
     },
     mainInputBox: {
       alignItems: 'center',
       justifyContent: 'center',
-      height: 510,
-      marginRight: 20,
+      height: 530,
       paddingRight: 10,
       opacity: .74,
+      width: '100%',
       backgroundColor: 'white',
       marginTop: 105,
       marginBottom: 35,
@@ -238,9 +244,9 @@ const styles = StyleSheet.create({
     recheckCharacter: {
       color: '#ff0000', 
       fontWeight: 'bold', 
-      fontSize: 18, 
+      fontSize: 14, 
       paddingBottom: 5, 
-      paddingTop: 15
+      paddingTop: 12
     },
     compareButton: {
         alignItems: 'center',
@@ -261,13 +267,15 @@ const styles = StyleSheet.create({
     container2: {
       justifyContent: 'space-between',
       flexDirection: 'row',
-      marginRight: 35
+      marginTop: -40,
+      marginRight: 30
     },
     singleStatsText: {
       color: 'white', 
       fontSize: 14, 
-      paddingBottom: 5, 
-      marginRight: 158
+      paddingBottom: 5,
+      marginTop: 40 
+    //   marginRight: 158
     },
     footerButton: {
       alignItems: 'center',
@@ -277,7 +285,7 @@ const styles = StyleSheet.create({
       borderRadius: 15,
       backgroundColor: 'white',
       opacity: .8,
-      marginBottom: 100,
+    //   marginBottom: 100,
     },
     footerButtonText: {
       color: 'green', 
