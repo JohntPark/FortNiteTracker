@@ -3,6 +3,7 @@ import {Image, View, StyleSheet} from 'react-native'
 
 
 const Images = props => {
+    //Icons displayed in HomePage and ComparisonPage
     return ( 
         <View>
         <View style={styles.imagesFormat}>

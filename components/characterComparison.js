@@ -3,7 +3,7 @@ import { View, ScrollView, Text, Image, StyleSheet, ImageBackground } from "reac
 // import ComparisonGraph from './comparisonGraph'
 
 
-
+//Images rendered for the background
 const images = [
     require('../Images/thanos-fortnite.jpg'),
     require('../Images/omega-skin.png'),
@@ -17,6 +17,7 @@ const images = [
     require("../Images/2018-fortnite-art.jpg")
 ]
 
+//Stats labeled for each record
 const generateName = tag => {
     switch (tag) {
         case 'p2':
@@ -89,7 +90,7 @@ const ComparisonInfo = props => {
         </View>
         </View>
     </View>
-    
+    {/* //Add comparison graph here */}
     {/* <ComparisonGraph comparisonGraph={props.comparisonGraph} comparisonGraph1={props.comparisonGraph1}/> */}
     </ScrollView>
     </ImageBackground>
@@ -99,7 +100,7 @@ const ComparisonInfo = props => {
 
 class CharacterSearch extends React.Component {
     static navigationOptions = ({ navigation }) => {
-        
+        // This is for the top header
         return {
             title: `Who is Better?`,
         headerStyle: {

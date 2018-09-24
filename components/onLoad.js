@@ -6,6 +6,7 @@ class OnLoad extends Component {
         loaded: false
      }
     render() {
+        //If the page needs time to render, the image of the character will display on bottom of screen
         const {
             placeholderColor,
             style,

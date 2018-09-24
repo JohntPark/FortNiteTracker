@@ -3,6 +3,8 @@
 // import { View, Text, StyleSheet } from "react-native";
 // import {Circle } from 'react-native-svg'
 
+
+//NEED TO WORK ON THIS, BUT COMPARISON GRAPH
 // class ComparisonGraph extends React.PureComponent {
 //   render() {
 //     const data = this.props.comparisonGraph;

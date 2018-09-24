@@ -14,6 +14,7 @@ import Images from "./images";
 import APIKey from "../config";
 
 class HomePage extends React.Component {
+  // Initial state
   state = {
     platform: "pc",
     username: "",
@@ -45,6 +46,7 @@ class HomePage extends React.Component {
     this.setState({
       isLoading: true
     }, () => {
+      //Grabs data for the character chosen
       axios.get(`https://api.fortnitetracker.com/v1/profile/${this.state.platform}/${this.state.username}`,
         {
           headers: {
@@ -58,6 +60,7 @@ class HomePage extends React.Component {
               isLoading: false
             });
           } else {
+            // Reset data when going back
             this.setState({
               isLoading: false,
               badEntry: false,
@@ -100,10 +103,11 @@ class HomePage extends React.Component {
             <Text style={styles.playerName}> Name the Player!</Text>
             <TextInput
               textAlign="center"
-              onChangeText={e => this.onUsernameChange(e)}
+              onChangeText={this.onUsernameChange}
               value={this.state.username}
               style={styles.textInput}
             />
+            {/* This checks for a correct entry */}
             {this.state.badEntry && (
               <Text style={styles.recheckCharacter}>
                 {" "}

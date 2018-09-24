@@ -8,6 +8,8 @@ import CharacterComparison from './components/characterComparison'
 import CharacterSearchRecentMatches from './components/characterSearchRecentMatches';
 // import ComparisonGraph from './components/comparisonGraph'
 
+
+//Navigation for the pages
 const RootStack = createStackNavigator(
     {
         Home: HomePage,
@@ -18,7 +20,7 @@ const RootStack = createStackNavigator(
         // ComparisonGraph: ComparisonGraph
     },
     {
-        initialRouteName: 'ComparisonPage'
+        initialRouteName: 'Home'
     }
 )
 

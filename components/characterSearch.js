@@ -9,6 +9,8 @@ import {
 } from "react-native";
 import CharacterSearchRecentMatches from "./characterSearchRecentMatches";
 
+
+//Images rendered for background
 const images = [
   require("../Images/thanos-fortnite.jpg"),
   require("../Images/omega-skin.png"),
@@ -22,6 +24,8 @@ const images = [
   require("../Images/2018-fortnite-art.jpg")
 ];
 
+
+//Labels for the records
 const generateName = tag => {
   switch (tag) {
     case "p2":
@@ -103,6 +107,7 @@ const CharacterInfo = props => {
 
 class CharacterSearch extends React.Component {
   static navigationOptions = ({ navigation }) => {
+    //Header information
     return {
       title: `${navigation.getParam("header", "info")}'s stats`,
       headerStyle: {

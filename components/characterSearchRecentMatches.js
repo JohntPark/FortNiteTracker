@@ -18,6 +18,7 @@ class CharacterSearchRecentMatches extends React.PureComponent {
 
         const contentInset = { top: 20, bottom: 30 }
         return (
+            //Data for the graphs for the Y Axis
             <View style={{ height: 200, width: '100%', backgroundColor: 'white', opacity: 0.6,}}>
                 <Text > Recent Matches (Kills)</Text>
             <View style={{ paddingLeft: 10, height: 200, width: '100%', flexDirection: 'row' }}>
