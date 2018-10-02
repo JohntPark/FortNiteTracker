@@ -1,11 +1,11 @@
 import React from 'react';
 import { createStackNavigator } from 'react-navigation';
 
-import HomePage from './components/homePage';
-import CharacterSearch from './components/characterSearch';
-import ComparisonPage from './components/comparisonPage';
-import CharacterComparison from './components/characterComparison'
-import CharacterSearchRecentMatches from './components/characterSearchRecentMatches';
+import HomePage from './components/solo/homePage';
+import CharacterSearch from './components/solo/characterSearch';
+import ComparisonPage from './components/comparison/comparisonPage';
+import CharacterComparison from './components/comparison/characterComparison'
+import CharacterSearchRecentMatches from './components/solo/characterSearchRecentMatches';
 // import ComparisonGraph from './components/comparisonGraph'
 
 

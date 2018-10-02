@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {View, Image, StyleSheet} from 'react-native'
+import {View, Image} from 'react-native';
+import onloadStyle from './styles/onloadStyle'
 
 class OnLoad extends Component {
     state = { 
@@ -13,8 +14,8 @@ class OnLoad extends Component {
             source
         }  = this.props
         return ( 
-            <View style={styles.container}>
-                <Image style={styles.renderedImage} onLoad={this._onLoad}/>
+            <View style={onloadStyle.container}>
+                <Image style={onloadStyle.renderedImage} onLoad={this._onLoad}/>
                 {
                     !this.state.loaded && <Image srouce={require('../Images/dancing.gif')}/>
                 }
@@ -27,19 +28,6 @@ class OnLoad extends Component {
         })
     }
 }
-const styles=StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: "flex-start",
-        alignItems: "center",
-        backgroundColor: "black"
-      },
-    renderedImage: {
-        height: 300,
-        width: 300
-    }
 
-
-})
  
 export default OnLoad;

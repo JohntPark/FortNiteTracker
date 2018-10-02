@@ -4,24 +4,24 @@ import {
   ScrollView,
   Text,
   Image,
-  StyleSheet,
   ImageBackground
 } from "react-native";
 import CharacterSearchRecentMatches from "./characterSearchRecentMatches";
+import characterSearchStyle from "./styles/charactersearchstyle";
 
 
 //Images rendered for background
 const images = [
-  require("../Images/thanos-fortnite.jpg"),
-  require("../Images/omega-skin.png"),
-  require("../Images/search.png"),
-  require("../Images/fortnite-image.jpg"),
-  require("../Images/raven2.jpeg"),
-  require("../Images/battle.jpg"),
-  require("../Images/raven-fortnite.jpg"),
-  require("../Images/hello.jpg"),
-  require("../Images/fortnite-wallpaper2.jpg"),
-  require("../Images/2018-fortnite-art.jpg")
+  require("../../Images/thanos-fortnite.jpg"),
+  require("../../Images/omega-skin.png"),
+  require("../../Images/search.png"),
+  require("../../Images/fortnite-image.jpg"),
+  require("../../Images/raven2.jpeg"),
+  require("../../Images/battle.jpg"),
+  require("../../Images/raven-fortnite.jpg"),
+  require("../../Images/hello.jpg"),
+  require("../../Images/fortnite-wallpaper2.jpg"),
+  require("../../Images/2018-fortnite-art.jpg")
 ];
 
 
@@ -51,32 +51,32 @@ const CharacterInfo = props => {
   let titles = Object.keys(stats);
 
   return (
-    <View style={styles.container}>
+    <View style={characterSearchStyle.container}>
       <ImageBackground
         source={images[Math.floor(Math.random() * 10)]}
-        style={styles.backgroundImage}
+        style={characterSearchStyle.backgroundImage}
       >
         <ScrollView>
-        <View style={styles.statBox}>
+        <View style={characterSearchStyle.statBox}>
             <View style={{ flexDirection: "row" }}>
             <Image
-                style={styles.dancingGif}
-                source={require(`../Images/dancinggif.gif`)}
+                style={characterSearchStyle.dancingGif}
+                source={require(`../../Images/dancinggif.gif`)}
             />
             <Image
-                style={styles.dancingGif}
-                source={require(`../Images/dancing.gif`)}
+                style={characterSearchStyle.dancingGif}
+                source={require(`../../Images/dancing.gif`)}
             />
             <Image
-                style={styles.dancingGif}
-                source={require(`../Images/dance3.gif`)}
+                style={characterSearchStyle.dancingGif}
+                source={require(`../../Images/dance3.gif`)}
             />
             </View>
             <View style={{ flexDirection: "row" }}>
-            <View style={styles.dataStyling}>
+            <View style={characterSearchStyle.dataStyling}>
                 {Object.values(stats).map((x, i) => (
-                <View style={styles.mapStyle} key={i}>
-                    <Text style={styles.statType}>
+                <View style={characterSearchStyle.mapStyle} key={i}>
+                    <Text style={characterSearchStyle.statType}>
                         {generateName(titles[i])}
                     </Text>
                     <Text style={{ color: "black" }}>
@@ -127,51 +127,6 @@ class CharacterSearch extends React.Component {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "flex-start",
-    alignItems: "center",
-    backgroundColor: "black"
-  },
-  backgroundImage: {
-    height: window.height,
-    width: '100%',
-    flex: 1,
-    paddingBottom: 50
-  },
-  statBox: {
-    alignItems: "center",
-    justifyContent: "center",
-    flex: 1
-  },
-  dancingGif: {
-    height: 100,
-    width: 100,
-    justifyContent: "flex-start",
-    alignItems: "flex-start"
-  },
-  dataStyling: {
-    backgroundColor: "#ffffff",
-    opacity: 0.75,
-    borderColor: "blue",
-    borderWidth: 1,
-    width: 350,
-    alignItems: "center",
-    justifyContent: "center",
-    paddingTop: 15,
-    paddingBottom: 15,
-    paddingLeft: 10
-  },
-  mapStyle: {
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  statType: {
-    color: "red",
-    fontWeight: "bold",
-    fontSize: 20
-  }
-});
+
 
 export default CharacterSearch;
