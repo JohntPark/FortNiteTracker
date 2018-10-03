@@ -34,6 +34,11 @@ class HomePage extends React.Component {
       username: e
     });
   };
+  helper = (res) => ({
+    fortniteStats: res.data.stats,
+    header: res.data.epicUserHandle,
+    graphingDataSolo: res.data.recentMatches
+  })
 
    onPickerChange = (itemValue, itemIndex) => {
     this.setState({
@@ -65,13 +70,11 @@ class HomePage extends React.Component {
               isLoading: false,
               badEntry: false,
               username: ''
-            }, () => {
-              this.props.navigation.navigate("CharacterPage", {
-                fortniteStats: res.data.stats,
-                header: res.data.epicUserHandle,
-                graphingDataSolo: res.data.recentMatches,
-              });
-            })
+            }, 
+            () => {
+              this.props.navigation.navigate("CharacterPage", this.helper(res))
+              }
+          );
           }
         })
         .catch(err => {

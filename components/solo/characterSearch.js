@@ -59,40 +59,40 @@ const CharacterInfo = props => {
         <ScrollView>
         <View style={characterSearchStyle.statBox}>
             <View style={{ flexDirection: "row" }}>
-            <Image
-                style={characterSearchStyle.dancingGif}
-                source={require(`../../Images/dancinggif.gif`)}
-            />
-            <Image
-                style={characterSearchStyle.dancingGif}
-                source={require(`../../Images/dancing.gif`)}
-            />
-            <Image
-                style={characterSearchStyle.dancingGif}
-                source={require(`../../Images/dance3.gif`)}
-            />
+                <Image
+                    style={characterSearchStyle.dancingGif}
+                    source={require(`../../Images/dancinggif.gif`)}
+                />
+                <Image
+                    style={characterSearchStyle.dancingGif}
+                    source={require(`../../Images/dancing.gif`)}
+                />
+                <Image
+                    style={characterSearchStyle.dancingGif}
+                    source={require(`../../Images/dance3.gif`)}
+                />
             </View>
             <View style={{ flexDirection: "row" }}>
-            <View style={characterSearchStyle.dataStyling}>
-                {Object.values(stats).map((x, i) => (
-                <View style={characterSearchStyle.mapStyle} key={i}>
-                    <Text style={characterSearchStyle.statType}>
-                        {generateName(titles[i])}
-                    </Text>
-                    <Text style={{ color: "black" }}>
-                        # of Kills: 
-                        {x.kills.displayValue}
-                    </Text>
-                    <Text style={{ color: "black" }}>
-                        # of Matches: 
-                        {x.matches.displayValue}
-                    </Text>
-                    <Text style={{ color: "black" }}>
-                        Kills/Game Ratio: {x.kpg.displayValue}
-                    </Text>
+                <View style={characterSearchStyle.dataStyling}>
+                    {Object.values(stats).map((x, i) => (
+                    <View style={characterSearchStyle.mapStyle} key={i}>
+                        <Text style={characterSearchStyle.statType}>
+                            {generateName(titles[i])}
+                        </Text>
+                        <Text style={{ color: "black" }}>
+                            # of Kills: 
+                            {x.kills.displayValue}
+                        </Text>
+                        <Text style={{ color: "black" }}>
+                            # of Matches: 
+                            {x.matches.displayValue}
+                        </Text>
+                        <Text style={{ color: "black" }}>
+                            Kills/Game Ratio: {x.kpg.displayValue}
+                        </Text>
+                    </View>
+                    ))}
                 </View>
-                ))}
-            </View>
             </View>
         </View>
 
