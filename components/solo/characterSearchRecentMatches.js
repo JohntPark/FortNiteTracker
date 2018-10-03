@@ -9,7 +9,6 @@ class CharacterSearchRecentMatches extends React.PureComponent {
         const data = this.props.soloGraph;
         console.log(data)
 
-        xAxisData=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
         // => ARRAY OF NUMBERS
         let killsArr = this.props.soloGraph.map(k => k.kills);
@@ -33,7 +32,7 @@ class CharacterSearchRecentMatches extends React.PureComponent {
                     formatLabel={value => `${value}`}
                 />
                 <LineChart
-                    style={{ flex: 1, marginLeft: 16 }}
+                    style={{ flex: 1, marginLeft: 16, paddingRight: 18 }}
                     data={killsArr}
                     svg={{ stroke: 'rgb(134, 65, 244)' }}
                     contentInset={contentInset}>

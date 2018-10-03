@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import CharacterSearchRecentMatches from "./characterSearchRecentMatches";
 import characterSearchStyle from "./styles/charactersearchstyle";
-
+import HeaderImages from './headerImages'
 
 //Images rendered for background
 const images = [
@@ -58,20 +58,7 @@ const CharacterInfo = props => {
       >
         <ScrollView>
         <View style={characterSearchStyle.statBox}>
-            <View style={{ flexDirection: "row" }}>
-                <Image
-                    style={characterSearchStyle.dancingGif}
-                    source={require(`../../Images/dancinggif.gif`)}
-                />
-                <Image
-                    style={characterSearchStyle.dancingGif}
-                    source={require(`../../Images/dancing.gif`)}
-                />
-                <Image
-                    style={characterSearchStyle.dancingGif}
-                    source={require(`../../Images/dance3.gif`)}
-                />
-            </View>
+              <HeaderImages />
             <View style={{ flexDirection: "row" }}>
                 <View style={characterSearchStyle.dataStyling}>
                     {Object.values(stats).map((x, i) => (

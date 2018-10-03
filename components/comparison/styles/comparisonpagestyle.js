@@ -141,7 +141,14 @@ const comparisonPageStyle = StyleSheet.create({
       color: "green",
       fontWeight: "bold",
       fontSize: 15
-    }
+    },
+    renderingImage: {
+      height: 180,
+      alignItems: "center",
+      width: 210,
+      flex: 1,
+      marginBottom: 100
+    },
   });
 
   export default comparisonPageStyle;

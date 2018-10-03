@@ -1,7 +1,7 @@
 import React from "react";
 import { View, ScrollView, Text, Image, ImageBackground } from "react-native";
 import characterComparisonStyle from "./styles/charactercomparisonstyle";
-// import ComparisonGraph from './comparisonGraph'
+import HeaderImages from "./headerImages";
 
 
 //Images rendered for the background
@@ -55,13 +55,7 @@ const ComparisonInfo = props => {
     <ImageBackground source={images[Math.floor(Math.random() * 10)]} style={characterComparisonStyle.backgroundImage}>
     <ScrollView>
     <View style={characterComparisonStyle.statBox}>
-    <View style={{flexDirection: 'row'}}>
-    
-    <Image style={characterComparisonStyle.dancingGif} source={require(`../../Images/dancinggif2.gif`)}/>
-    <Image style={characterComparisonStyle.dancingGif} source={require(`../../Images/dancing.gif`)}/>
-    <Image style={characterComparisonStyle.dancingGif} source={require(`../../Images/dance3.gif`)}/>
-    
-    </View>
+        <HeaderImages/>
     <View style={{ flexDirection: 'row',}}>
         <View style={characterComparisonStyle.dataStyling}>
         <Text style={characterComparisonStyle.personName1}>{props.person1_name}</Text>
@@ -91,8 +85,6 @@ const ComparisonInfo = props => {
         </View>
         </View>
     </View>
-    {/* //Add comparison graph here */}
-    {/* <ComparisonGraph comparisonGraph={props.comparisonGraph} comparisonGraph1={props.comparisonGraph1}/> */}
     </ScrollView>
     </ImageBackground>
     </View>
@@ -114,23 +106,18 @@ class CharacterSearch extends React.Component {
         }
     };
 
-        //  ${navigation.getParam('header', 'Person 1' )} vs. ${navigation.getParam('header1', 'Person 2' )}
 
     render() { 
         let stats = this.props.navigation.getParam('comparisonStats', {});
         let person2_stats = this.props.navigation.getParam('comparisonStats1', {});
         let person1_name = this.props.navigation.getParam('header', {});
         let person2_name = this.props.navigation.getParam('header1', {});
-        // let comparisonGraph = this.props.navigation.getParam('comparisonGraph', {});
-        // let comparisonGraph1 = this.props.navigation.getParam('comparisonGraph1', {})
         return (
             <ComparisonInfo 
                 stats={stats} 
                 person1_name={person1_name}
                 person2_stats={person2_stats}
                 person2_name={person2_name}
-                // comparisonGraph={comparisonGraph}
-                // comparisonGraph1={comparisonGraph1}
             />
         )
     }

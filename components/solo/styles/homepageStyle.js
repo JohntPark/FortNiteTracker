@@ -113,6 +113,10 @@ const homepageStyle = StyleSheet.create({
       color: "orange",
       fontWeight: "bold",
       fontSize: 15
+    },
+    renderingImage: {
+      height: 200, 
+      width: 200
     }
   });
 

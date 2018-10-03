@@ -40,7 +40,7 @@ class HomePage extends React.Component {
     graphingDataSolo: res.data.recentMatches
   })
 
-   onPickerChange = (itemValue, itemIndex) => {
+   onPickerChange = itemValue => {
     this.setState({
       platform: itemValue
     })
@@ -117,13 +117,14 @@ class HomePage extends React.Component {
                 Please check your platform or user name
               </Text>
             )}
+            
             <Button
               onPress={this.getCharacter}
               text="Search"
               style={homepageStyle.homepageButton}
               textStyle={homepageStyle.homePageTextStyle}
             />
-            {this.state.isLoading && <Image source={ require('../../Images/dancing.gif')} style={{height: 200, width: 200}}/>}
+            {this.state.isLoading && <Image source={ require('../../Images/dancing.gif')} style={homepageStyle.renderingImage}/>}
           </View>
           <View style={homepageStyle.container2}>
             <View>

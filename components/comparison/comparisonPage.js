@@ -182,13 +182,7 @@ class ComparisonPage extends React.Component {
             {this.state.isLoading && (
               <Image
                 source={require("../../Images/dancing.gif")}
-                style={{
-                  height: 180,
-                  alignItems: "center",
-                  width: 210,
-                  flex: 1,
-                  marginBottom: 100
-                }}
+                style={comparisonPageStyle.renderingImage}
               />
             )}
             <View style={{ marginTop: 41, marginRight: -27 }}>
