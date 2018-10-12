@@ -3,6 +3,8 @@ import {StyleSheet} from 'react-native';
 const homepageStyle = StyleSheet.create({
     container: {
       flex: 1,
+      height: window.height,
+      width: window.width,
       flexDirection: "column",
       backgroundColor: "#fff"
     },
@@ -14,7 +16,7 @@ const homepageStyle = StyleSheet.create({
     mainInputBox: {
       alignItems: "center",
       justifyContent: "flex-start",
-      height: 450,
+      height: window.height,
       width: '100%',
       opacity: .8,
       backgroundColor: 'grey',

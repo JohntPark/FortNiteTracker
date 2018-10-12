@@ -15,7 +15,7 @@ const comparisonPageStyle = StyleSheet.create({
     mainInputBox: {
       alignItems: "center",
       justifyContent: "center",
-      height: 530,
+      height: window.height,
       paddingRight: 10,
       opacity: 0.74,
       width: "100%",
